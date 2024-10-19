@@ -8,8 +8,7 @@
  */
 
 if (!function_exists('blogarise_post_categories')) :
-    function blogarise_post_categories($separator = '&nbsp')
-    {
+    function blogarise_post_categories($separator = '&nbsp') {
         $global_show_categories = blogarise_get_option('global_show_categories');
         if ($global_show_categories == 'no') {
             return;
@@ -46,24 +45,20 @@ endif;
 
 if (!function_exists('blogarise_get_category_color_class')) :
 
-    function blogarise_get_category_color_class($term_id)
-    {
+    function blogarise_get_category_color_class($term_id) {
 
         $color_id = "category_color_" . $term_id;
         // retrieve the existing value(s) for this meta field. This returns an array
         $term_meta = get_option($color_id);
         $color_class = ($term_meta) ? $term_meta['color_class_term_meta'] : '';
         return $color_class;
-
-
     }
 endif;
 
 if ( ! function_exists( 'blogarise_date_content' ) ) :
     function blogarise_date_content() { ?>
-      
       <span class="bs-blog-date">
-            <a href="<?php echo esc_url(get_month_link(esc_html(get_post_time('Y')),esc_html(get_post_time('m')))); ?>"><time datetime=""><?php echo esc_html(get_the_date()); ?></time></a>
+        <a href="<?php echo esc_url(get_month_link(esc_html(get_post_time('Y')),esc_html(get_post_time('m')))); ?>"><time datetime=""><?php echo esc_html(get_the_date()); ?></time></a>
       </span>
 <?php }
 endif;
@@ -80,8 +75,18 @@ endif;
 
 if (!function_exists('get_archive_title')) :
         
-    function get_archive_title($title)
-    {
+    function get_archive_title($title) {
+        
+        if (class_exists('WooCommerce')) {
+            if (is_shop()) {
+                $title = 'Shop';
+            } elseif (is_product_category()) {
+                $title = single_term_title('', false);
+            } elseif (is_product_tag()) {
+                $title = single_term_title('', false);
+            }
+        }
+        
         if (is_category()) {
             $title = single_cat_title();
         } elseif (is_tag()) {
@@ -109,11 +114,11 @@ add_filter('get_the_archive_title', 'get_archive_title');
 if (!function_exists('blogarise_archive_page_title')) :
         
     function blogarise_archive_page_title($title) { ?>
-            <div class="bs-card-box page-entry-title">
-                <h1 class="entry-title title mb-0"><?php echo get_the_archive_title();?></h1>
-                <?php do_action('blogarise_breadcrumb_content'); ?>
-            </div>
-        <?php
+        <div class="bs-card-box page-entry-title">
+            <h1 class="entry-title title mb-0"><?php echo get_the_archive_title();?></h1>
+            <?php do_action('blogarise_breadcrumb_content'); ?>
+        </div>
+    <?php
     }
 endif;
 add_action('blogarise_action_archive_page_title', 'blogarise_archive_page_title');
@@ -121,8 +126,7 @@ add_action('blogarise_action_archive_page_title', 'blogarise_archive_page_title'
 
 if (!function_exists('blogarise_post_item_tag')) :
 
-    function blogarise_post_item_tag($view = 'default')
-    {
+    function blogarise_post_item_tag($view = 'default') {
         global $post;
 
         if ('post' === get_post_type()) {
@@ -188,9 +192,8 @@ if (!function_exists('blogarise_post_meta')) :
     }
 endif; 
 if (!function_exists('blogarise_menu_search')) :
-
-    function blogarise_menu_search() { $blogarise_menu_search  = get_theme_mod('blogarise_menu_search','true');
-    
+    function blogarise_menu_search() { 
+        $blogarise_menu_search  = get_theme_mod('blogarise_menu_search','true');
         if($blogarise_menu_search == true) { ?>
             <a class="msearch ml-auto"  data-bs-target="#exampleModal"  href="#" data-bs-toggle="modal">
                 <i class="fa fa-search"></i>
@@ -284,13 +287,11 @@ if ( ! function_exists( 'blogarise_the_excerpt' ) ) :
         if (preg_match('/\s*(&nbsp;|\xA0)\s*/u', $source_content)) {
             // Remove non-breaking space and its variations from the text
             $source_content = preg_replace('/\s*(&nbsp;|\xA0)\s*/u', ' ', $source_content);
-            
         }
 
         $source_content = preg_replace( '`\[[^\]]*\]`', '', $source_content );
         $trimmed_content = wp_trim_words( $source_content, $length, '&hellip;' );
         return $trimmed_content;
-
     }
 endif;
 
@@ -314,8 +315,6 @@ if ( ! function_exists( 'blogarise_breadcrumb_trail' ) ) :
     }
     add_action( 'blogarise_breadcrumb_trail_content', 'blogarise_breadcrumb_trail' );
 endif;
-
-
 
 if( ! function_exists( 'blogarise_breadcrumb' ) ) :
     /**

@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogarise/
 Author: Themeansar
 Author URI: http://themeansar.com
 Description: BlogArise is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. BlogArise is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. BlogArise is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogarise-demos/ and documentation at https://docs.themeansar.com/docs/blogarise/
-Version: 0.88
+Version: 0.89
 Tested up to: 6.6
 Requires PHP: 7.0
 Requires at least: 5.4
@@ -871,7 +871,7 @@ button.mfp-close:hover, button.mfp-close:focus {
 	gap: 8px;
 }
 .bs-header-main .navbar-header .custom-logo {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     object-fit: contain;
 }
@@ -2042,6 +2042,7 @@ button.mfp-close:hover, button.mfp-close:focus {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	gap: 10px;
 }
 .bs-post-meta a {
     display: inline-block;
@@ -2198,7 +2199,7 @@ button.mfp-close:hover, button.mfp-close:focus {
     list-style: none;
 }
 .comment-body .reply {
-    text-align: right;
+    text-align: left;
 }
 #comments img {max-width: 100%;}
 .reply a {
@@ -2234,7 +2235,7 @@ button.mfp-close:hover, button.mfp-close:focus {
 	border-radius: 60%;
     position: absolute;
     z-index: 0;
-    left: 0;
+    right: 0;
     top: 28px;
     width: 60px;
     height: 60px;
@@ -3554,5 +3555,8 @@ blockquote.right {
 @media (max-width:575px) {
 	.page-entry-title {
 		flex-direction: column;
+	}
+	.comments-area .comment-body {
+		padding: 100px 0px 25px 25px;
 	}
 }
