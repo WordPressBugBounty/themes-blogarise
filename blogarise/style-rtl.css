@@ -2180,7 +2180,7 @@ button.mfp-close:hover, button.mfp-close:focus {
 }
 .comments-area .comment-body {
     position: relative;
-    padding: 25px 25px 25px 70px;
+    padding: 25px 70px 25px 25px;
     min-height: 120px;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -2194,7 +2194,7 @@ button.mfp-close:hover, button.mfp-close:focus {
     position: relative;
     padding: 0;
     margin: 0;
-    margin-left: 2.5rem;
+    margin-right: 2.5rem;
     z-index: 0;
     list-style: none;
 }
@@ -2224,12 +2224,24 @@ button.mfp-close:hover, button.mfp-close:focus {
     flex-direction: row;
 }
 .comment-meta .comment-metadata { 
-    margin: 0 0 0 5px;
+	width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.comment-metadata .edit-link:before {
+    content: "\f044";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 14px;
+    margin-right: 5px;
+}
+.comment-meta .comment-author .fn a {
+    display: inline-block;
 }
 .comment-content {
     position: relative;
     z-index: 0;
-    padding: 16px 40px 16px 0;
+    padding: 16px 0px 16px 40px;
 }
 .comments-area img.avatar {
 	border-radius: 60%;
