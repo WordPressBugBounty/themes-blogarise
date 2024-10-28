@@ -340,11 +340,18 @@ function blogarise_social_share_post($post) {
 
 function blogarise_post_image_display_type($post) {
 $url = blogarise_get_freatured_image_url($post->ID, 'blogarise-medium');
-if($url) { ?>
-    <div class="bs-blog-thumb lg back-img" style="background-image: url('<?php echo esc_url($url); ?>');">
-        <a href="<?php the_permalink(); ?>" class="link-div"></a>
-    </div> 
-<?php } }
+    if($url) { 
+        if ( blogarise_get_option('post_image_type') == 'post_fix_height' ) { ?>
+            <div class="bs-blog-thumb lg back-img" style="background-image: url('<?php echo esc_url($url); ?>');">
+                <a href="<?php the_permalink(); ?>" class="link-div"></a>
+            </div> 
+        <?php }  else { ?>
+            <div class="bs-post-thumb lg">
+                <?php echo '<a href="'.esc_url(get_the_permalink()).'">'; the_post_thumbnail( '', array( 'class'=>'img-responsive img-fluid' ) ); echo '</a>'; ?>
+            </div> 
+        <?php }
+    } 
+}
 
 if ( ! function_exists( 'blogarise_header_color' ) ) :
 

@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogarise/
 Author: Themeansar
 Author URI: http://themeansar.com
 Description: BlogArise is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. BlogArise is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. BlogArise is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogarise-demos/ and documentation at https://docs.themeansar.com/docs/blogarise/
-Version: 0.89
+Version: 0.91
 Tested up to: 6.6
 Requires PHP: 7.0
 Requires at least: 5.4
@@ -20,7 +20,7 @@ Text Domain: blogarise
   --bxshover: -8px 8px 0px #000;
   --bstras: 0 4px 60px 0 rgba(0,0,0,0.2);
 }
- /*---------------------------------------
+/*---------------------------------------
 	Body & Global    
 -----------------------------------------*/
 body {
@@ -659,7 +659,6 @@ button.mfp-close:hover, button.mfp-close:focus {
     flex: 1;
 }
 /*---------------------------------------
-/* --------------------------------------
 =========================================
  Header
 =========================================
@@ -1776,31 +1775,15 @@ button.mfp-close:hover, button.mfp-close:focus {
 .list-blog.bs-blog-post p {
 	margin-bottom: 0;
 }
-/*----- Double Category small-post -----*/
-.double-category-posts {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-column-gap: 1.5rem;
+.list-blog.bs-blog-post:has(.bs-post-thumb){
+	align-items: center;
 }
-.double-category-posts .colinn {
-    padding: 20px;
-    border: 1px solid #eee;
-    margin-bottom: 30px;
+.list-blog .bs-post-thumb{
+	border: 2px solid #000;
 }
-.small-post.mg-post-1 {
-    padding: 0;
-    position: relative;
-    margin-bottom: 10px;
-    flex-direction: column;
-}
-.small-post.mg-post-1  .img-small-post {
-    height: 370px;
-    width: 100%;
-    margin-right: auto;
-    margin-bottom: 25px;
-}
-.small-post.mg-post-1 .small-post-content {
-    margin-bottom: 20px;
+.bs-post-thumb{
+	overflow: hidden;
+	border-radius: var(--bxbra);
 }
 /*----- List small-post-widget -----*/
 .small-post-list-widget .col-grid-2 {
@@ -3558,6 +3541,9 @@ blockquote.right {
 	.missed-area{
 		grid-template-columns: repeat(1, minmax(0, 1fr));
 	}
+	.list-blog.bs-blog-post{
+		padding: 35px;
+	}
 }
 @media screen and (min-width: 240px) and (max-width: 1179px) {
 	.boxed {
@@ -3570,5 +3556,8 @@ blockquote.right {
 	}
 	.comments-area .comment-body {
 		padding: 100px 0px 25px 25px;
+	}
+	.list-blog.bs-blog-post{
+		padding: 25px;
 	}
 }

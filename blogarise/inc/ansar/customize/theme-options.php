@@ -152,6 +152,13 @@ $wp_customize->add_section('footer_copyright', array(
     'panel' => 'theme_option_panel',
 ) );
 
+//Post Image Settings
+$wp_customize->add_section( 'post_image_options' , array(
+    'title' => __('Post Image Settings', 'blogarise'),
+    'capability' => 'edit_theme_options',
+    'panel' => 'theme_option_panel',
+    'priority' => 85,
+) );
 //Scroll Bar Section
 $wp_customize->add_section( 'general_options' , array(
     'title' => __('Scroller', 'blogarise'),
@@ -754,6 +761,23 @@ $wp_customize->add_control(
         'type' => 'text',
     )
 );
+
+// date in header display type
+$wp_customize->add_setting( 'post_image_type', array(
+    'default'           => $blogarise_default['post_image_type'],
+    'capability'        => 'edit_theme_options',
+    'sanitize_callback' => 'blogarise_sanitize_select',
+) );
+$wp_customize->add_control( 'post_image_type', array(
+    'type'     => 'radio',
+    'label'    => esc_html__( 'Post Image Display Type:', 'blogarise' ),
+    'choices'  => array(
+        'post_fix_height'          => esc_html__( 'Fix Height Post Image', 'blogarise' ),
+        'post_auto_height' => esc_html__( 'Auto Height Post Image', 'blogarise' ),
+    ),
+    'section'  => 'post_image_options',
+) );
+
 //========== Scroller ===============//
 $wp_customize->add_setting('blogarise_scrollup_enable',
     array(

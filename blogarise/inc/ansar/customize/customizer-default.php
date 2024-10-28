@@ -61,6 +61,7 @@ function blogarise_get_default_theme_options() {
     $defaults['global_post_date_author_setting'] = 'show-date-author';
     $defaults['global_hide_post_date_author_in_list'] = 1;
     $defaults['global_widget_excerpt_setting'] = 'trimmed-content';
+    $defaults['post_image_type'] = 'post_fix_height';
  
     $defaults['frontpage_latest_posts_section_title'] = __('You may have missed', 'blogarise');
     $defaults['frontpage_latest_posts_category'] = 0;
