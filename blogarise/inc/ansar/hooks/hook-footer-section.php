@@ -62,7 +62,7 @@ if( ! function_exists( 'blogarise_footer_copyright' ) ) :
           <div class="<?php echo ( has_nav_menu( 'footer' ) ? 'col-md-6 text-md-start text-xs' :'col-md-12 text-center' ); ?>">
             <p class="mb-0">
               <?php $blogarise_footer_copyright = get_theme_mod( 'blogarise_footer_copyright','Copyright &copy; All rights reserved' );
-                echo esc_html($blogarise_footer_copyright);
+                echo '<span class="copyright-text">' . esc_html($blogarise_footer_copyright) .'</span>';
               ?>
               <span class="sep"> | </span>
               <?php  printf(esc_html__('%1$s by %2$s.', 'blogarise'), '<a href="https://themeansar.com/free-themes/blogarise/" target="_blank">Blogarise</a>', '<a href="https://themeansar.com" target="_blank">Themeansar</a>'); ?>

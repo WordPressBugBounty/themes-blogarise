@@ -3,9 +3,9 @@ Contributors: Themeansar
 Author: Themeansar
 Requires at least: WordPress 4.7
 Tested up to: 6.6
-Requires PHP: 7.0
-Stable tag: 0.91
-Version: 0.91
+Requires PHP: 7.4
+Stable tag: 0.92
+Version: 0.92
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -382,3 +382,6 @@ Added Keyword Control.
 
 = Version 0.91
 * Added Posts Image Height Option.
+
+= Version 0.92
+* Added Selective Refresh To Copyright Section.

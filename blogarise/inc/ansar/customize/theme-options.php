@@ -961,6 +961,7 @@ $wp_customize->add_setting('hide_copyright',
     array(
         'default' => true,
         'sanitize_callback' => 'blogarise_sanitize_checkbox',
+        'transport' => 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogarise_Toggle_Control( $wp_customize, 'hide_copyright', 
@@ -974,7 +975,7 @@ $wp_customize->add_control(new Blogarise_Toggle_Control( $wp_customize, 'hide_co
 $wp_customize->add_setting('blogarise_footer_copyright', array(
     'sanitize_callback' => 'sanitize_text_field',
     'default' => __('Copyright &copy; All rights reserved','blogarise'),
-    
+    'transport' => 'postMessage',
 ) );
 $wp_customize->add_control('blogarise_footer_copyright', array(
     'label' => __('Copyright Text','blogarise'),
@@ -984,7 +985,7 @@ $wp_customize->add_control('blogarise_footer_copyright', array(
 
 $wp_customize->add_setting(
     'blogarise_footer_copy_bg', array( 'sanitize_callback' => 'blogarise_sanitize_alpha_color',
-    
+    'transport' => 'postMessage',    
 ) );
 $wp_customize->add_control( 'blogarise_footer_copy_bg', array(
     'label'      => __('Background Color', 'blogarise' ),
@@ -994,7 +995,7 @@ $wp_customize->add_control( 'blogarise_footer_copy_bg', array(
 
 $wp_customize->add_setting(
     'blogarise_footer_copy_text', array( 'sanitize_callback' => 'blogarise_sanitize_alpha_color',
-    
+    'transport' => 'postMessage',    
 ) );
 $wp_customize->add_control( 'blogarise_footer_copy_text', array(
     'label'      => __('Text Color', 'blogarise' ),

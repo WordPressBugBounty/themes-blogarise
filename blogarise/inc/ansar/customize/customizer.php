@@ -48,13 +48,11 @@ require get_template_directory().'/inc/ansar/customize/customizer-default.php';
 
 $repeater_path = trailingslashit( get_template_directory() ) . '/inc/ansar/customizer-repeater/functions.php';
 if ( file_exists( $repeater_path ) ) {
-require_once( $repeater_path );
+    require_once( $repeater_path );
 }
 
 function banner_slider_option($control) {
-
     $banner_slider_option = $control->manager->get_setting('banner_options_main')->value();
-
     if($banner_slider_option == 'banner_slider_section_option'){
         return true;
     } else{
@@ -67,7 +65,7 @@ function banner_slider_category_function($control){
     $banner_slider_category_option = $control->manager->get_setting('banner_slider_section_option')->value();
     if ($banner_slider_category_option == 'banner_slider_category_option' && $no_option == 'banner_slider_section_option') {
         return true;
-    }else{ return false;}
+    } else { return false;}
 }
 
 function header_video_act_call($control){
@@ -75,7 +73,7 @@ function header_video_act_call($control){
 
     if($video_banner_section == 'header_video'){
         return true;
-    }else{
+    } else {
         return false;
     }
 }
@@ -85,32 +83,28 @@ function video_banner_section_function($control){
 
     if($video_banner_section == 'video_banner_section'){
         return true;
-    }else{
+    } else {
         return false;
     }
 }
-
 
 function slider_callback($control){
     $banner_slider_option = $control->manager->get_setting('banner_options_main')->value();
     $banner_slider_section_option = $control->manager->get_setting('banner_slider_section_option')->value();
     if ($banner_slider_option == 'banner_slider_section_option' && $banner_slider_section_option == 'latest_post_show') {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 function overlay_text($control){
-
     $banner_slider_option = $control->manager->get_setting('banner_options_main')->value();
-
     if($banner_slider_option == 'header_video' || $banner_slider_option == 'video_banner_section'){
         return true;
-    }else{
+    } else {
        return false;
     }
-
 }
 
 /**
@@ -140,25 +134,21 @@ function Blogarise_Customize_register($wp_customize) {
     $wp_customize->get_setting('background_color')->transport   = 'refresh';
 
 	if (isset($wp_customize->selective_refresh)) {
-
 		// site logo
 		$wp_customize->selective_refresh->add_partial('custom_logo', array(
 			'selector'        => '.site-logo', 
 			'render_callback' => 'custom_logo_selective_refresh'
 		));
-		
 		// site title
         $wp_customize->selective_refresh->add_partial('blogname', array(
             'selector'        => '.site-title a, .site-title-footer a',
             'render_callback' => 'Blogarise_Customize_partial_blogname',
         ));
-
 		// site tagline
         $wp_customize->selective_refresh->add_partial('blogdescription', array(
             'selector'        => '.site-description, .site-description-footer',
             'render_callback' => 'Blogarise_Customize_partial_blogdescription',
         ));
-
         $wp_customize->selective_refresh->add_partial('blogarise_header_social_icons', array(
             'selector'        => '.bs-head-detail .bs-social'
         ));
@@ -201,7 +191,12 @@ function Blogarise_Customize_register($wp_customize) {
             'render_callback' => 'blogarise_customize_partial_right_nav',
         ));
         $wp_customize->selective_refresh->add_partial('blogarise_footer_copyright', array(
-            'selector'        => '.bs-footer-copyright .sep', 
+            'selector'        => '.bs-footer-copyright .copyright-text', 
+            'render_callback' => 'Blogarise_Customize_partial_footer_copyright',
+        ));
+        $wp_customize->selective_refresh->add_partial('hide_copyright', array(
+            'selector'        => '.bs-footer-copyright', 
+            'render_callback' => 'Blogarise_Customize_partial_hide_copyright',
         ));
         $wp_customize->selective_refresh->add_partial('header_social_icon_enable', array(
             'selector'        => '.bs-head-detail .col-md-4.col-xs-12, .bs-header-main .container > .row > .col-lg-4:not(.navbar-header, .d-lg-flex)',
@@ -306,6 +301,10 @@ function Blogarise_Customize_partial_breaking_news_title() {
     return get_theme_mod( 'breaking_news_title' ); 
 }
 
+function Blogarise_Customize_partial_footer_copyright() {
+    return get_theme_mod( 'blogarise_footer_copyright' ); 
+}
+
 function Blogarise_Customize_partial_blogarise_related_post_title() {
     return get_theme_mod( 'blogarise_related_post_title' ); 
 }
@@ -316,6 +315,10 @@ function Blogarise_Customize_partial_you_missed_title() {
 
 function blogarise_customize_partial_content_layout() {
 	return do_action('blogarise_action_main_content_layouts');
+}
+
+function Blogarise_Customize_partial_hide_copyright() {
+	return do_action('blogarise_action_footer_copyright');
 }
 
 function blogarise_customize_partial_head_social_icon() {
@@ -341,8 +344,7 @@ add_action('customize_preview_init', 'Blogarise_Customize_preview_js');
 
 /************************* Related Post Callback function *********************************/
 
-    function blogarise_rt_post_callback ( $control ) 
-    {
+    function blogarise_rt_post_callback ( $control ) {
         if( true == $control->manager->get_setting ('blogarise_enable_related_post')->value()){
             return true;
         }
@@ -352,8 +354,7 @@ add_action('customize_preview_init', 'Blogarise_Customize_preview_js');
     }
 
 /************************* Theme Customizer with Sanitize function *********************************/
-function blogarise_theme_option( $wp_customize )
-{
+function blogarise_theme_option( $wp_customize ) {
     function blogarise_sanitize_text( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
     }
@@ -378,38 +379,36 @@ function blogarise_theme_option( $wp_customize )
     );
 
     $wp_customize->add_setting('blogarise_center_logo_title',
-    array(
-        'default' => false,
-        'transport' => 'postMessage',
-        'sanitize_callback' => 'blogarise_sanitize_checkbox',
-    )
+        array(
+            'default' => false,
+            'transport' => 'postMessage',
+            'sanitize_callback' => 'blogarise_sanitize_checkbox',
+        )
     );
-
     $wp_customize->add_control('blogarise_center_logo_title',
         array(
             'label' => esc_html__('Display Center Site Title and Tagline', 'blogarise'),
             'section' => 'title_tagline',
             'type' => 'checkbox',
             'priority' => 55,
-
         )
     );
 
     $wp_customize->add_setting('header_textcolor_dark_layout',
-    array(
-        'default' => '#fff',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'blogarise_sanitize_alpha_color',
-    )
-);
-
-$wp_customize->add_control('header_textcolor_dark_layout',
-    array(
-        'label' => esc_html__('Site Title/Tagline Color (Dark Mode)', 'blogarise'),
-        'section' => 'colors',
-        'type' => 'color',
-        'priority' => 2,
-    ));
+        array(
+            'default' => '#fff',
+            'capability' => 'edit_theme_options',
+            'sanitize_callback' => 'blogarise_sanitize_alpha_color',
+        )
+    );
+    $wp_customize->add_control('header_textcolor_dark_layout',
+        array(
+            'label' => esc_html__('Site Title/Tagline Color (Dark Mode)', 'blogarise'),
+            'section' => 'colors',
+            'type' => 'color',
+            'priority' => 2,
+        )
+    );
 
     $wp_customize->add_setting('blogarise_skin_mode_title',
         array(
@@ -478,7 +477,6 @@ $wp_customize->add_control('header_textcolor_dark_layout',
             'sanitize_callback' => 'blogarise_sanitize_alpha_color',
         )
     );
-
     $wp_customize->add_control('primary_menu_bg_color',
     array(
         'label' => esc_html__('Background Color', 'blogarise'),
