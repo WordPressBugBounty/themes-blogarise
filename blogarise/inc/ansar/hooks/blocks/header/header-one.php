@@ -68,8 +68,8 @@
           <div class="collapse navbar-collapse" id="navbar-wp">
             <?php wp_nav_menu( array(
               'theme_location' => 'primary',
-              'container'  => 'nav-collapse collapse'.(is_rtl() ? ' navbar-inverse-collapse' : ''.''),
-              'menu_class' => 'nav navbar-nav',
+              'container'  => 'nav-collapse collapse navbar-inverse-collapse',
+              'menu_class' => 'nav navbar-nav'.(is_rtl() ? ' sm-rtl' :''),
               'fallback_cb' => 'blogarise_fallback_page_menu',
               'walker' => new blogarise_nav_walker()
             ) ); ?>
