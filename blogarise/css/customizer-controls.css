@@ -117,3 +117,13 @@ a.button.button-primary.button-hero.blogarise-button-padding {
   border: 0;
 	background: transparent;
 }
+#customize-controls .control-section > h3.accordion-section-title {
+  display: flex;
+}
+#customize-controls li#accordion-section-blogarise_pro_upsell .accordion-section-title{ 
+  justify-content: space-between;
+  align-items: center;
+}
+#customize-controls li#accordion-section-blogarise_pro_upsell .accordion-section-title::after{
+  content: ''; 
+}

@@ -182,9 +182,14 @@ if (!function_exists('blogarise_post_meta')) :
         if($blogarise_global_comment_enable == true) { ?>
             <span class="comments-link"> 
                 <a href="<?php the_permalink(); ?>">
-                <?php echo absint(get_comments_number()); ?>
-                <?php esc_html_e( get_comments_number() <= 1 ? __('Comment', 'blogarise') : __('Comments', 'blogarise')); ?>
-            </a> 
+                    <?php
+                    if ( get_comments_number() == 0 ) {
+                        esc_html_e(  __('No Comments', 'blogarise') );
+                    } else {
+                        echo get_comments_number() . ' ';
+                        esc_html_e( get_comments_number() == 1 ? __('Comment', 'blogarise') : __('Comments', 'blogarise') );
+                    } ?>
+                </a> 
             </span>
         <?php } ?>
         <?php blogarise_edit_link(); 
