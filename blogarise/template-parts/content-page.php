@@ -9,8 +9,12 @@
  */
 
 if( class_exists('woocommerce') && (is_account_page() || is_cart() || is_checkout())) { ?>
-		<div class="col-md-12 bs-card-box padding-20">
-			<?php if (have_posts()) {  while (have_posts()) : the_post();  the_content(); endwhile; } 
+		<div class="col-md-12">
+			<div class="bs-card-box padding-20">
+			<?php if (have_posts()) {  while (have_posts()) : the_post();  the_content(); endwhile; } ?>
+			</div>
+		</div> 
+		<?php 
 	} else {
 		$blogarise_page_layout = get_theme_mod('blogarise_page_layout','page-align-content-right');
 			if($blogarise_page_layout == "page-align-content-left"){ ?>
