@@ -21,6 +21,7 @@
 .navbar-toggler:hover, .navbar-toggler::focus {
 	background-color: #ffcc00;
 }
+
 /*==================== topbar ====================*/
 .switch input:checked + .slider{
   background: #ccc;
@@ -439,10 +440,23 @@ a:hover, a:focus {
 	background: #ffcc00;
 	color: var(--secondary-color);
 }
+
 .bs-blog-category a:hover, .bs-blog-category a:focus { 
 	color: var(--secondary-color);
 	background: #ffcc00;
 }
+/**Category Color **/
+.category-color-1{background: #ffcc00; color: #fff}
+a.category-color-2{background: #00765b; color: #fff}
+a.category-color-3{background: #622569; color: #fff}
+a.category-color-4{background: #ff4545; color: #fff}
+
+/**Category Color on hover **/
+.category-color-1{background: #ffcc00; color: #fff}
+a.category-color-2:hover, a.category-color-2:focus{background: #00765b; color: #fff}
+a.category-color-3:hover, a.category-color-3:focus{background: #622569; color: #fff}
+a.category-color-4:hover, a.category-color-4:focus{background: #ff4545; color: #fff}
+
 .bs-blog-post .title, .bs-blog-post .title a {
     color: var(--head-color);
 }
