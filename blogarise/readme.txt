@@ -4,8 +4,8 @@ Author: Themeansar
 Requires at least: WordPress 5.4
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 0.96
-Version: 0.96
+Stable tag: 0.97
+Version: 0.97
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -397,3 +397,6 @@ Added Keyword Control.
 
 = Version 0.96
 * Fixed Prefix Category Colors.
+
+= Version 0.97
+* Remove Unnecessary Functions.

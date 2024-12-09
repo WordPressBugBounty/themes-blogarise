@@ -66,6 +66,10 @@ function blogarise_custom_js() {
 	
 	wp_enqueue_script('blogarise_custom-js', get_template_directory_uri() . '/js/custom.js' , array('jquery'));
 
+    $enable_custom_typography = get_theme_mod('enable_custom_typography',false);
+    if( $enable_custom_typography == 'true') {
+		custom_typography_function();
+    }
 }
 add_action('wp_footer','blogarise_custom_js');
 
@@ -87,36 +91,6 @@ function blogarise_skip_link_focus_fix() {
 }
 add_action( 'wp_print_footer_scripts', 'blogarise_skip_link_focus_fix' );
 
-//Footer widget text color
-function blogarise_footer_text_color()
-{
-$blogarise_footer_text_color = get_theme_mod('blogarise_footer_text_color');
-if($blogarise_footer_text_color) { ?>
-	<style>
-		footer .bs-widget p, .site-title-footer a, .site-title-footer a:hover, .site-description-footer, .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6 {
-			color: <?php echo esc_attr($blogarise_footer_text_color); ?> !important;
-		}
-	</style>
-<?php }
-$blogarise_footer_copy_bg = get_theme_mod('blogarise_footer_copy_bg');
-if($blogarise_footer_copy_bg){ ?>
-	<style>
-		footer .bs-footer-copyright {
-    		background: <?php echo esc_attr($blogarise_footer_copy_bg); ?>;
-		}
-	</style>
-<?php }
-$blogarise_footer_copy_text = get_theme_mod('blogarise_footer_copy_text');
-if($blogarise_footer_copy_text)
-{ ?>
-	<style>
-		footer .bs-footer-copyright p, footer .bs-footer-copyright a {
-    		color: <?php echo esc_attr($blogarise_footer_copy_text); ?>;
-		}
-	</style>
-<?php } }
-add_action('wp_footer','blogarise_footer_text_color');
-
 function blogarise_customizer_scripts() {
 	
 	wp_enqueue_style( 'blogarise-customizer-styles', get_template_directory_uri() . '/css/customizer-controls.css' );
@@ -133,13 +107,3 @@ function blogarise_admin_scripts() {
 }
 endif;
 add_action( 'admin_enqueue_scripts', 'blogarise_admin_scripts' );
-
-//Custom Typography Enable
-function enable_custom_typography() {
-    $enable_custom_typography = get_theme_mod('enable_custom_typography',false);
-    if( $enable_custom_typography == 'true') {
-		custom_typography_function();
-    }
-}
-add_action('wp_footer','enable_custom_typography');
-?>
