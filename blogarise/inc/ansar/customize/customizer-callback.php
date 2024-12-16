@@ -17,15 +17,12 @@ if (!function_exists('blogarise_main_banner_section_status')) :
      *
      * @return bool Whether the control is active to the current preview.
      */
-    function blogarise_main_banner_section_status($control)
-    {
-
+    function blogarise_main_banner_section_status($control) {
         if (true == $control->manager->get_setting('show_main_news_section')->value()) {
             return true;
         } else {
             return false;
         }
-
     }
 
 endif;
@@ -42,15 +39,12 @@ if (!function_exists('blogarise_featued_links_section_status')) :
      *
      * @return bool Whether the control is active to the current preview.
      */
-    function blogarise_featued_links_section_status($control)
-    {
-
+    function blogarise_featued_links_section_status($control) {
         if (true == $control->manager->get_setting('show_featured_links_section')->value()) {
             return true;
         } else {
             return false;
         }
-
     }
 
 endif;

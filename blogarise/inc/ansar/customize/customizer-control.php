@@ -18,19 +18,15 @@ class Blogarise_Section_Title extends WP_Customize_Control {
     public $label = '';
     public $description = '';
 
-    public function enqueue()
-    {
-
+    public function enqueue(){
         wp_enqueue_style('blogarise-custom-controls-css', trailingslashit(get_template_directory_uri()) . 'inc/ansar/customize/css/customizer.css', array(), '1.0', 'all');
     }
 
-    public function render_content() {
-        ?>
+    public function render_content() { ?>
         <h3><?php echo esc_html( $this->label ); ?></h3>
         <?php if (!empty($this->description)) { ?>
             <span class="customize-control-description"><?php echo esc_html($this->description); ?></span>
-        <?php } ?>
-        <?php
+        <?php }
     }
 }
 
@@ -42,8 +38,7 @@ class Blogarise_Section_Title extends WP_Customize_Control {
  *
  * @see WP_Customize_Control
  */
-class Blogarise_Simple_Notice_Custom_Control extends WP_Customize_Control
-{
+class Blogarise_Simple_Notice_Custom_Control extends WP_Customize_Control {
     /**
      * The type of control being rendered
      */
@@ -52,8 +47,7 @@ class Blogarise_Simple_Notice_Custom_Control extends WP_Customize_Control
     /**
      * Render the control in the customizer
      */
-    public function render_content()
-    {
+    public function render_content() {
         $allowed_html = array(
             'a' => array(
                 'href' => array(),
@@ -170,7 +164,6 @@ class Blogarise_Dropdown_Taxonomies_Control extends WP_Customize_Control {
     }
 }
 
-
 /**
  * Customize Control for Radio Image.
  *
@@ -221,7 +214,6 @@ class Blogarise_Radio_Image_Control extends WP_Customize_Control {
         <?php
     }
 }
-
 
 /**
  * Upsell customizer section.
@@ -322,13 +314,10 @@ class Blogarise_Customize_Heading_Control extends WP_Customize_Control {
      * @access protected
      * @return void
      */
-    protected function content_template() {
-        ?>
-
+    protected function content_template() { ?>
         <h4>
             <# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
         </h4>
-
         <?php
     }
 
@@ -338,5 +327,4 @@ class Blogarise_Customize_Heading_Control extends WP_Customize_Control {
     protected function render_content() {
 
     }
-
 }

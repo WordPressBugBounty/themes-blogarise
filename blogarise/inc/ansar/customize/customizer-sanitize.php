@@ -16,9 +16,7 @@ if ( ! function_exists( 'blogarise_sanitize_checkbox' ) ) :
      * @return bool Whether the checkbox is checked.
      */
     function blogarise_sanitize_checkbox( $checked ) {
-
         return ( ( isset( $checked ) && true === $checked ) ? true : false );
-
     }
 
 endif;
@@ -51,28 +49,28 @@ if ( ! function_exists( 'blogarise_sanitize_select' ) ) :
 endif;
 
 
-    if ( ! function_exists( 'blogarise_sanitize_dropdown_pages' ) ) :
+if ( ! function_exists( 'blogarise_sanitize_dropdown_pages' ) ) :
 
-        /**
-         * Sanitize dropdown pages.
-         *
-         * @since 1.0.0
-         *
-         * @param int                  $page_id Page ID.
-         * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-         * @return int|string Page ID if the page is published; otherwise, the setting default.
-         */
-        function blogarise_sanitize_dropdown_pages( $page_id, $setting ) {
+    /**
+     * Sanitize dropdown pages.
+     *
+     * @since 1.0.0
+     *
+     * @param int                  $page_id Page ID.
+     * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+     * @return int|string Page ID if the page is published; otherwise, the setting default.
+     */
+    function blogarise_sanitize_dropdown_pages( $page_id, $setting ) {
 
-            // Ensure $input is an absolute integer.
-            $page_id = absint( $page_id );
+        // Ensure $input is an absolute integer.
+        $page_id = absint( $page_id );
 
-            // If $page_id is an ID of a published page, return it; otherwise, return the default.
-            return ( 'publish' === get_post_status( $page_id ) ? $page_id : $setting->default );
+        // If $page_id is an ID of a published page, return it; otherwise, return the default.
+        return ( 'publish' === get_post_status( $page_id ) ? $page_id : $setting->default );
 
-        }
+    }
 
-    endif;
+endif;
 
 if ( ! function_exists( 'blogarise_sanitize_image' ) ) :
 
@@ -114,7 +112,7 @@ if ( ! function_exists( 'blogarise_sanitize_image' ) ) :
 endif;
 
 if ( ! function_exists( 'blogarise_sanitize_radio' ) ) :
-function blogarise_sanitize_radio( $val, $setting ) {
+    function blogarise_sanitize_radio( $val, $setting ) {
         $val = sanitize_key( $val );
         $choices = $setting->manager->get_control( $setting->id )->choices;
         return array_key_exists( $val, $choices ) ? $val : $setting->default;

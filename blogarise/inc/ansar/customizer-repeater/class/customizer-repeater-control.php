@@ -100,7 +100,6 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 		if ( ! empty( $args['customizer_repeater_repeater_control'] ) ) {
 			$this->customizer_repeater_repeater_control = $args['customizer_repeater_repeater_control'];
 		}
-		
 
 		if ( ! empty( $id ) ) {
 			$this->id = $id;
@@ -266,8 +265,6 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 							), $title);
 						}
 						
-						
-						
 						if($this->customizer_repeater_button_text_control){
 							$this->input_control(array(
 							'label' => apply_filters('repeater_input_labels_filter', esc_html__('Button Text',
@@ -277,7 +274,6 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 							'customizer_repeater_button_text_control'),
 							), $button);
 						}
-						
 						
 						if($this->customizer_repeater_link_control){
 							$this->input_control(array(
@@ -290,14 +286,11 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 						
 						if($this->customizer_repeater_checkbox_control == true){
 							$this->testimonila_check($open_new_tab);
-							
 						}
 						
 						if($this->customizer_repeater_slide_format == true){
 							$this->slide_format($slide_format);
-							
 						}
-						
 						
 						if($this->customizer_repeater_image_control == true && $this->customizer_repeater_icon_control == true) {
 							$this->icon_type_choice( $choice );
@@ -309,9 +302,6 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 							$this->icon_picker_control($icon_value, $choice);
 						}
 						
-					
-						
-						
 						if($this->customizer_repeater_color_control == true){
 							$this->input_control(array(
 								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','blogarise' ), $this->id, 'customizer_repeater_color_control' ),
@@ -321,7 +311,6 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 							), $color);
 						}
 						
-						
 						if($this->customizer_repeater_shortcode_control==true){
 							$this->input_control(array(
 								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Shortcode','blogarise' ), $this->id, 'customizer_repeater_shortcode_control' ),
@@ -329,7 +318,6 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
                                 'type'  => apply_filters('blogarise_repeater_input_types_filter', '', $this->id, 'customizer_repeater_shortcode_control' ),
 							), $shortcode);
 						}
-						
 						
 						if($this->customizer_repeater_repeater_control==true){
 							$this->repeater_control($repeater);
@@ -367,8 +355,6 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 						$this->icon_picker_control();
 					}
 					
-					
-						
 					if($this->customizer_repeater_color_control==true){
 						$this->input_control(array(
 							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','blogarise' ), $this->id, 'customizer_repeater_color_control' ),
@@ -386,14 +372,14 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 					}
 					
 					if($this->customizer_repeater_button_text_control){
-							$this->input_control(array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__('Button Text',
-							'blogarise'), $this->id, 'customizer_repeater_button_text_control'),
-							'class' => 'customizer-repeater-button-text-control',
-							'type' => apply_filters('blogarise_repeater_input_types_filter', '' , $this->id,
-							'customizer_repeater_button_text_control'),
-							));
-						}
+						$this->input_control(array(
+						'label' => apply_filters('repeater_input_labels_filter', esc_html__('Button Text',
+						'blogarise'), $this->id, 'customizer_repeater_button_text_control'),
+						'class' => 'customizer-repeater-button-text-control',
+						'type' => apply_filters('blogarise_repeater_input_types_filter', '' , $this->id,
+						'customizer_repeater_button_text_control'),
+						));
+					}
 						
 					if ( $this->customizer_repeater_link_control == true ) {
 						$this->input_control( array(
@@ -404,14 +390,12 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 					}
 					
 					if($this->customizer_repeater_checkbox_control == true){
-							$this->testimonila_check();
-							
-						}
+						$this->testimonila_check();
+					}
 					
 					if($this->customizer_repeater_slide_format == true){
-							$this->slide_format($slide_format);
-							
-						}
+						$this->slide_format($slide_format);
+					}
 					
 					if($this->customizer_repeater_repeater_control==true){
 						$this->repeater_control();
@@ -427,7 +411,7 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 	}
 
 	private function input_control( $options, $value='' ){
-//print_r($options);
+	//print_r($options);
 	?>
 		<span class="customize-control-title <?php echo esc_html( $options['label'] ); ?>" 
 		<?php if($options['class']== 'customizer-repeater-video-url-control') {echo 'style="display:none;"'; }?>
@@ -452,14 +436,13 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 	}
 	
 	
-	private function testimonila_check($value='no'){
-		?>
-	<div class="customize-control-title">
-	<?php esc_html_e('Open link in new tab','blogarise'); ?>
-	<span class="switch">
-	  <input type="checkbox" name="custom_checkbox" value="yes" <?php if($value=='yes'){echo 'checked';}?> class="customizer-repeater-checkbox">
-	</span>
-	</div>
+	private function testimonila_check($value='no'){ ?>
+		<div class="customize-control-title">
+			<?php esc_html_e('Open link in new tab','blogarise'); ?>
+			<span class="switch">
+				<input type="checkbox" name="custom_checkbox" value="yes" <?php if($value=='yes'){echo 'checked';}?> class="customizer-repeater-checkbox">
+			</span>
+		</div>
 	<?php
 	}
 
@@ -495,11 +478,9 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 			<input type="button" class="button button-secondary customizer-repeater-custom-media-button" value="<?php esc_attr_e( 'Upload Image','blogarise' ); ?>" />
 		</div>
 		<?php
-	}
+	}	
 	
-	
-	private function slide_format($value='customizer_repeater_slide_format_standard'){?>
-	<?php
+	private function slide_format($value='customizer_repeater_slide_format_standard'){
 	}
 
 	private function icon_type_choice($value='customizer_repeater_icon'){ ?>
