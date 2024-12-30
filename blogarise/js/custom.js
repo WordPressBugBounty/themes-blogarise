@@ -7,7 +7,10 @@ function homemain() {
   var homemain = new Swiper('.homemain', {
     direction: 'horizontal',
     loop: true,
-    autoplay: true,
+    autoplay:{
+      delay:4000,
+    },
+    speed:700,
     slidesPerView: 1,
     // Navigation arrows
     navigation: {
