@@ -4,8 +4,8 @@ Author: Themeansar
 Requires at least: WordPress 5.4
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.0
-Version: 1.0.0
+Stable tag: 1.0.1
+Version: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -410,3 +410,6 @@ Added Keyword Control.
 = Version 1.0.0
 * Fixed Styling Issue.
 * Fixed RTL Styling Issue.
+
+= Version 1.0.1
+* Fixed Full Width Page Issue.

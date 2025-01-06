@@ -495,7 +495,7 @@ a.category-color-4:hover, a.category-color-4:focus{background: #ff4545; color: #
     background: var(--secondary-color);
     border-color: var(--secondary-color);
 }
-blockquote {
+blockquote, blockquote.wp-block-quote {
 	background: var(--border-color);
     border-left: 5px solid #ffcc00;
     color: #718096;
