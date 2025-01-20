@@ -29,12 +29,13 @@ class blogarise_author_info extends WP_Widget {
             $blogarise_btnone_target = '_blank';
         endif;
 
-        echo $args['before_title'] . $instance['title'] . $args['after_title'];
-            if( !empty($instance['image_uri']) ): ?> 
+        echo $args['before_title'] . $instance['title'] . $args['after_title']; ?>
                     
             <div class="bs-author text-center">
-                    
-                <img class="rounded-circle" src="<?php echo esc_url($instance['image_uri']); ?>" alt="<?php echo apply_filters('widget_title', $instance['name']); ?>" />
+                
+                <?php if (!empty($instance['image_uri']) ) { ?> 
+                    <img class="rounded-circle" src="<?php echo esc_url($instance['image_uri']); ?>" alt="<?php echo apply_filters('widget_title', $instance['name']); ?>" />
+                <?php } ?>
                 <h4><?php echo esc_html($instance['name']); ?></h4>
                 <p><?php echo esc_html($instance['desc']); ?></p>
                 
@@ -51,8 +52,7 @@ class blogarise_author_info extends WP_Widget {
                     <?php } ?>
                 </ul>   
             </div>
-            <?php endif;
-
+            <?php
         echo $after_widget;
 
     }
