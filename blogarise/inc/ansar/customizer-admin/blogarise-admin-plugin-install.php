@@ -56,7 +56,12 @@ function blogarise_deprecated_hook_admin_notice() {
                         </div>
                         </div>
                         <div class="blogarise-notice_image">
-                             <img class="blogarise-screenshot" src="<?php echo esc_url( get_theme_file_uri() . '/images/blogarise.customize.webp' ); ?>" alt="<?php esc_attr_e( 'BlogArise', 'blogarise' ); ?>" />
+                        <?php 
+                        $image_url = get_theme_file_uri( '/images/blogarise.customize.webp' );
+                        // Check if the file exists
+                        if ( file_exists( get_theme_file_path( '/images/blogarise.customize.webp' ) ) ) { ?>
+                            <img class="blogarise-screenshot" src="<?php echo esc_url( $image_url ); ?>" alt="<?php esc_attr_e( 'BlogArise', 'blogarise' ); ?>" />
+                        <?php } ?>
                         </div>
                     </div>
                 </div>
