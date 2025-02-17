@@ -30,8 +30,8 @@ if( class_exists('woocommerce') && (is_account_page() || is_cart() || is_checkou
         	<div class="<?php echo esc_attr($blogarise_page_layout == 'page-full-width-content' ? 'col-md-12' : 'col-lg-8') ?>">
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<div class="bs-card-box padding-20">
-						<?php while (have_posts()) : the_post(); ?>
-							<?php if(has_post_thumbnail()) {
+						<?php while (have_posts()) : the_post();  
+							if(has_post_thumbnail()) {
 								if ( is_single() ) { ?>
 									<figure class="post-thumbnail">
 										<?php the_post_thumbnail('full'); ?>					
