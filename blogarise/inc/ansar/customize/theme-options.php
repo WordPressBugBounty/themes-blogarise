@@ -734,6 +734,7 @@ $wp_customize->add_setting('you_missed_enable',
     array(
         'default' => true,
         'sanitize_callback' => 'blogarise_sanitize_checkbox',
+        'transport' => 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogarise_Toggle_Control( $wp_customize, 'you_missed_enable', 

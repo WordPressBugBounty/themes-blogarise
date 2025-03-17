@@ -231,6 +231,10 @@ function Blogarise_Customize_register($wp_customize) {
 			'selector'        => '.page-class > .container > .row',
 			'render_callback' => 'blogarise_customize_partial_page_layout',
 		));
+		$wp_customize->selective_refresh->add_partial('you_missed_enable', array(
+			'selector'        => 'div.missed',
+			'render_callback' => 'blogarise_customize_partial_you_missed_enable',
+		));
 	}
 
     $default = blogarise_get_default_theme_options();
@@ -291,6 +295,10 @@ function Blogarise_Customize_partial_sidebar_menu() {
 
 function Blogarise_Customize_partial_blogarise_menu_subscriber() {
     return get_theme_mod( 'blogarise_menu_subscriber' ); 
+}
+
+function blogarise_customize_partial_you_missed_enable() {
+	return do_action('blogarise_action_footer_missed_section');
 }
 
 function Blogarise_Customize_partial_brk_news_enable() {

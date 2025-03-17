@@ -5,9 +5,13 @@
  * Contains the closing of the #content div and all content after.
  *
  * @package BlogArise
- */
-do_action('blogarise_action_footer_missed_section');
-?>
+ */ ?>
+
+<!--==================== Missed ====================-->
+<div class="missed">
+<?php do_action('blogarise_action_footer_missed_section'); ?>
+</div> 
+<!-- end missed -->
   <!--==================== FOOTER AREA ====================-->
   <?php $blogarise_footer_widget_background = get_theme_mod('blogarise_footer_widget_background');
   $blogarise_footer_overlay_color = get_theme_mod('blogarise_footer_overlay_color'); ?>
