@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogarise/
 Author: Themeansar
 Author URI: http://themeansar.com
 Description: BlogArise is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. BlogArise is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. BlogArise is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogarise-demos/ and documentation at https://docs.themeansar.com/docs/blogarise/
-Version: 1.0.9
+Version: 1.1.0
 Tested up to: 6.7
 Requires PHP: 7.4
 Requires at least: 5.4
@@ -20,6 +20,7 @@ Text Domain: blogarise
   --bxshover: 8px 8px 0px #000;
   --bstras: 0 4px 60px 0 rgba(0,0,0,0.2);
   --headFont: 'Outfit', sans-serif;
+  --bodyFont: 'Rubik', sans-serif;
 }
 /*---------------------------------------
 	Body & Global    
@@ -29,7 +30,7 @@ body {
     -webkit-font-smoothing: antialiased;
 	padding: 0;
 	margin: 0;
-	font-family: 'Rubik', sans-serif;
+	font-family: var(--bodyFont);
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.78;
@@ -618,6 +619,12 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link{
     width: 18px;
     height: 8px; 
 	background: #ffcc00;
+}
+.bs .swiper-button-prev.swiper-button-disabled, .bs .swiper-button-next.swiper-button-disabled{
+	opacity: 0;
+}
+.bs:hover .swiper-button-prev.swiper-button-disabled, .bs:hover .swiper-button-next.swiper-button-disabled{
+	opacity: 0.35;
 }
 .mg-latest-news{
 	width: 100%;

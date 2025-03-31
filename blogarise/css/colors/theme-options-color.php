@@ -117,7 +117,7 @@ body.dark .site-title a, body.dark .site-description{
 	color: <?php echo esc_attr($blogarise_slider_overlay_text_color); ?>;
 }
 /*==================== Footer color ====================*/
-footer .bs-widget p, .site-branding-text .site-title-footer a, .site-branding-text .site-title-footer a:hover, .site-branding-text .site-description-footer, .site-branding-text .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6{
+footer .bs-widget p, .site-branding-text .site-title-footer a, .site-branding-text .site-title-footer a:hover, .site-branding-text .site-description-footer, .site-branding-text .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6, footer .bs-widget ul li a{
 	color: <?php echo esc_attr(get_theme_mod('blogarise_footer_text_color')); ?>;
 }
 footer .bs-footer-copyright{

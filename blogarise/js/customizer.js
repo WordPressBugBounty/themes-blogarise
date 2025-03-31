@@ -211,7 +211,7 @@
 		});
 	}
 
-	customizePreviewStyle('blogarise_footer_text_color', 'footer .bs-widget p, .site-title-footer a, .site-title-footer a:hover, .site-description-footer, .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6', 'color','');
+	customizePreviewStyle('blogarise_footer_text_color', 'footer .bs-widget p, .site-title-footer a, .site-title-footer a:hover, .site-description-footer, .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6, footer .bs-widget ul li a', 'color','');
 	customizePreviewStyle('blogarise_footer_overlay_color', 'footer.footer .overlay', 'background-color','');
 	customizePreviewStyle('blogarise_footer_copy_text', 'footer .bs-footer-copyright p, footer .bs-footer-copyright a', 'color','');
 	customizePreviewStyle('blogarise_footer_copy_bg', 'footer .bs-footer-copyright', 'background-color','');
