@@ -171,6 +171,35 @@
 		} );
 	} );
 	
+	// Featured Links Background overlay Image.
+	wp.customize( 'fatured_post_image_one', function( value ) {
+		value.bind( function( newVal ) {
+			if(newVal !== ''){
+				$('.promoss .one .bs-widget.promo').css('background-image', 'url(' + newVal + ')');
+			}else{
+				$('.promoss .one .bs-widget.promo').removeAttr('style');
+			}
+		} );
+	} );
+	wp.customize( 'fatured_post_image_two', function( value ) {
+		value.bind( function( newVal ) {
+			if(newVal !== ''){
+				$('.promoss .two .bs-widget.promo').css('background-image', 'url(' + newVal + ')');
+			}else{
+				$('.promoss .two .bs-widget.promo').removeAttr('style');
+			}
+		} );
+	} );
+	wp.customize( 'fatured_post_image_three', function( value ) {
+		value.bind( function( newVal ) {
+			if(newVal !== ''){
+				$('.promoss .three .bs-widget.promo').css('background-image', 'url(' + newVal + ')');
+			}else{
+				$('.promoss .three .bs-widget.promo').removeAttr('style');
+			}
+		} );
+	} );
+
 	// Top Bar Background Color.
 	wp.customize( 'top_bar_header_background_color', function( value ) {
 		value.bind( function( newVal ) {

@@ -60,9 +60,10 @@ $wp_customize->add_control(
 
 $wp_customize->add_setting('fatured_post_image_one',
 array(
-    'default' => '',
-    'capability' => 'edit_theme_options',
-    'sanitize_callback' => 'esc_url_raw',
+        'default' => '',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_control(
@@ -150,6 +151,7 @@ $wp_customize->add_setting('fatured_post_image_two',
         'default' => $blogarise_default['fatured_post_image_two'],
         'capability' => 'edit_theme_options',
         'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_control(
@@ -239,6 +241,7 @@ $wp_customize->add_setting('fatured_post_image_three',
         'default' => $blogarise_default['fatured_post_image_three'],
         'capability' => 'edit_theme_options',
         'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_control(
