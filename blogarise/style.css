@@ -4,10 +4,10 @@ Theme URI: https://themeansar.com/free-themes/blogarise/
 Author: Themeansar
 Author URI: http://themeansar.com
 Description: BlogArise is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. BlogArise is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. BlogArise is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogarise-demos/ and documentation at https://docs.themeansar.com/docs/blogarise/
-Version: 1.1.2
-Tested up to: 6.7
+Version: 1.1.3
+Tested up to: 6.8
 Requires PHP: 7.4
-Requires at least: 5.4
+Requires at least: 6.6
 Tags: two-columns, three-columns, left-sidebar, right-sidebar, translation-ready, custom-background, custom-logo, featured-images, footer-widgets, full-width-template, blog, e-commerce, entertainment
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -1298,6 +1298,45 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link{
 	General
 =========================================
 -----------------------------------------*/
+html {
+    font-size: 100%;
+}
+/*
+  ##Device = Most of the screen
+  ##Screen = 1200px and under.
+*/
+@media only screen and (max-width: 1200px) {
+    html {
+        font-size: 95%;
+    }
+}
+/* 
+  ##Device = Most of the tablets
+  ##Screen = 991px and under.
+*/
+@media screen and (max-width: 991px) {
+    html {
+        font-size: 90%; 
+    }
+}
+/* 
+  ##Device = Most of the tablets
+  ##Screen = 767px and under.
+*/
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 85%; 
+    }
+}
+/* 
+  ##Device = Most of the smartphones (portrait)
+  ##Screen = 575px and under.
+*/
+@media screen and (max-width: 575px) {
+    html {
+        font-size: 80%; 
+    }
+}
 .site-branding-text .site-title a {
 	font-size: 60px;
 	line-height: 1.2; 
@@ -2810,13 +2849,13 @@ footer .bs-widget .sub-menu li:first-child {
 .bs_upscr {
 	bottom: 2%;
 	display: none;
-	height: 50px;
+	height: 3.125rem;
+	width: 3.125rem;
 	opacity: 1;
 	overflow: hidden;
 	position: fixed;
 	right: 10px;
 	text-align: center;
-	width: 50px;
 	z-index: 9999;
 	border-radius: 50%;
 	border-width: 3px;
@@ -2827,8 +2866,8 @@ footer .bs-widget .sub-menu li:first-child {
 	opacity: 1;
 }
 .bs_upscr i {
-	font-size: 16px;
-    line-height: 45px;
+	font-size: 1rem;
+    line-height: 2.813rem;
 }
 .bs_upscr:hover, .bs_upscr:focus {
 	border-width: 3px;
@@ -3198,9 +3237,6 @@ blockquote.right {
 	}
 }
 @media (max-width: 767.98px) {
-	html { 
-		font-size: 13px; 
-	} 
 	.bs-headthree .bs-header-main .inner {
 		min-height: 100px;
 	}
@@ -3309,13 +3345,5 @@ blockquote.right {
 	.bs .swiper-button-prev, .bs .swiper-button-next {
 		width: 35px;
 		height: 35px;
-	}
-	.bs_upscr{
-		width: 35px;
-		height: 35px;
-	}
-	.bs_upscr i {
-		font-size: 14px;
-		line-height: 31px;
 	}
 }
