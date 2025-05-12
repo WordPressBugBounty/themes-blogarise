@@ -10,12 +10,11 @@ get_header(); ?>
 <div id="content">
     <!--container-->
     <div class="container">
-    <!--row-->
+        <!--==================== Breadcrumb section ====================-->
+        <?php do_action('blogarise_action_archive_page_title'); ?>
+        <!--row-->
         <div class="row">
-            <!--==================== Breadcrumb section ====================-->
-            <?php do_action('blogarise_breadcrumb_content'); ?>
             <div class="col-lg-<?php echo ( !is_active_sidebar( 'sidebar-1' ) ? '12' :'8' ); ?>">
-                <h2><?php /* translators: %s: search term */ printf( esc_html__( 'Search Results for: %s','blogarise'), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h2>
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <?php if ( have_posts() ) { /* Start the Loop */
                         while ( have_posts() ) { the_post();
@@ -42,7 +41,7 @@ get_header(); ?>
                         blogarise_page_pagination();
                     } else { ?> 
                         <!-- bs-posts-sec bs-posts-modul-6 -->
-                        <div class="bs-posts-sec bs-posts-modul-6 bs-blog-post list-blog">    
+                        <div class="bs-posts-sec bs-posts-modul-6 bs-blog-post list-blog d-flex">    
                             <div class="inner">
                                 <h2><?php esc_html_e( "Nothing Found", 'blogarise' ); ?></h2>
                                 <div class="">
