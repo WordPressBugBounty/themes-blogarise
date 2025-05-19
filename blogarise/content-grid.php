@@ -9,7 +9,7 @@ $blogarise_global_category_enable = get_theme_mod('blogarise_global_category_ena
 <div id="grid" class="row" >
     <?php while(have_posts()){ the_post(); ?>
     <div class="<?php echo $layout?>">
-        <div id="post-<?php the_ID(); ?>" <?php post_class('bs-blog-post'); ?>> 
+        <div id="post-<?php the_ID(); ?>" <?php post_class('bs-blog-post grid'); ?>> 
                 <?php $url = blogarise_get_freatured_image_url($post->ID, 'blogarise-medium');
                 blogarise_post_image_display_type($post); 
                 ?>
