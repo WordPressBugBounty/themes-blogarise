@@ -23,7 +23,7 @@ get_header(); ?>
           <?php while ( have_posts() ) : the_post();
           	if(has_post_thumbnail()) { ?>
               <figure class="post-thumbnail">
-                <?php the_post_thumbnail('full'); ?>					
+                <?php the_post_thumbnail('full', array('class' => 'img-fluid attachment-full size-full')); ?>					
               </figure>
             <?php }
             the_content();
