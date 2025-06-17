@@ -8,7 +8,7 @@ function blogarise_fonts_url() {
 		
     $font_families = array();
  
-	$font_families = array('Rubik:400,500,700|Outfit Sans:400,500,700&display=swap');
+	$font_families = array('Rubik:400,500,700|Outfit:wght@100,200,300,400,500,600,700,800,900&display=swap');
  
         $query_args = array(
             'family' => urlencode( implode( '|', $font_families ) ),
