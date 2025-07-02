@@ -101,15 +101,6 @@ li.customize-control-color .wp-picker-container .wp-color-result.button {
 .dashicons-external:before {
   color: #2271b1;
 }
-a.button.button-primary.button-hero.blogarise-button-padding {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-.blogarise-notice_text .panel-column-6{
-  display: flex;
-  align-items: center;
-}
-.blogarise-documentation, .blogarise-demos{ display:inline; margin-right: 10px; margin-left: 5px; }
 #customize-controls .ui-checkboxradio-radio-label{
 	padding: 0;
   height: auto;
@@ -126,4 +117,45 @@ a.button.button-primary.button-hero.blogarise-button-padding {
 }
 #customize-controls li#accordion-section-blogarise_pro_upsell .accordion-section-title::after{
   content: ''; 
+}
+
+
+.blogarise-notice {
+  position: relative;
+  padding: 8px;
+}
+.blogarise-notice-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blogarise-notice_text .panel-column-6{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.panel-column-6 .blogarise-notice-buttons{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.panel-column-6 .blogarise-notice-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.blogarise-notice-link{ 
+  display:inline;
+  color: #222;
+}
+.admin-bar .blogarise-btn-get-started, .admin-bar .blogarise-btn-get-started-customize{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }

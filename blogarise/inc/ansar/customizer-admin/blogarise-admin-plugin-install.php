@@ -37,23 +37,27 @@ function blogarise_deprecated_hook_admin_notice() {
                         
                         <p><?php esc_html_e("Thank you for choosing blogarise theme. To take full advantage of the complete features of the theme click the Starter Sites and Install and Activate the", "blogarise");?> <a href="https://wordpress.org/plugins/ansar-import"><?php esc_html_e("Ansar Import", "blogarise");?></a> <?php esc_html_e("plugin then use the demo importer and install the Blogarise Demo according to your need.", "blogarise"); ?></p>
 
-                        <div class="panel-column-6">
-                        <a class="blogarise-btn-get-started button button-primary button-hero blogarise-button-padding" href="#" data-name="" data-slug=""><?php esc_html_e( 'Starter Sites', 'blogarise' ) ?></a>
-
-                        <a class="blogarise-btn-get-started-customize button button-primary button-hero blogarise-button-padding" href="<?php echo esc_url( admin_url( '/customize.php' ) ); ?>" data-name="" data-slug=""><?php esc_html_e( 'Customize Site', 'blogarise' ) ?></a>
-
-                        
-                        <div class="blogarise-documentation">
-                        <span aria-hidden="true" class="dashicons dashicons-external"></span>
-                         <a class="blogarise-documentation" href="<?php echo esc_url('https://docs.themeansar.com/docs/blogarise-pro')?>" data-name="" data-slug=""><?php esc_html_e( 'View Documentation', 'blogarise' ) ?></a>
+                            <div class="panel-column-6">
+                            <div class="blogarise-notice-buttons">
+                                <a class="blogarise-btn-get-started button button-primary button-hero blogarise-button-padding" href="#" data-name="" data-slug=""><span aria-hidden="true" class="dashicons dashicons-images-alt"></span><?php esc_html_e( 'Starter Sites', 'blogarise' ) ?></a>
+                                <a class="blogarise-btn-get-started-customize button button-primary button-hero blogarise-button-padding" href="<?php echo esc_url( admin_url( '/customize.php' ) ); ?>" data-name="" data-slug=""><span aria-hidden="true" class="dashicons dashicons-welcome-widgets-menus"></span><?php esc_html_e( 'Customize Site', 'blogarise' ) ?></a>
+                            </div>
+                            <div class="blogarise-notice-links">
+                                <div class="blogarise-documentation blogarise-notice-link">
+                                    <span aria-hidden="true" class="dashicons dashicons-list-view"></span>
+                                    <a class="blogarise-documentation" href="<?php echo esc_url('https://docs.themeansar.com/docs/blogarise-lite/')?>" data-name="" data-slug=""><?php esc_html_e( 'View Documentation', 'blogarise' ) ?></a>
+                                </div>
+                                <div class="blogarise-demos blogarise-notice-link">
+                                    <span aria-hidden="true" class="dashicons dashicons-images-alt"></span>
+                                    <a class="blogarise-demos" href="<?php echo esc_url('https://demos.themeansar.com/blogarise-demos')?>" data-name="" data-slug=""><?php esc_html_e( 'View Demos', 'blogarise' ) ?></a>
+                                </div>
+                                <div class="blogarise-support blogarise-notice-link">
+                                    <span aria-hidden="true" class="dashicons dashicons-format-chat"></span>
+                                    <a class="blogarise-support" href="<?php echo esc_url('https://themeansar.ticksy.com/')?>" data-name="" data-slug=""><?php esc_html_e( 'Support', 'blogarise' ) ?></a>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="blogarise-demos">
-                        <span aria-hidden="true" class="dashicons dashicons-external"></span>
-                        <a class="blogarise-demos" href="<?php echo esc_url('https://demos.themeansar.com/blogarise-demos/')?>" data-name="" data-slug=""><?php esc_html_e( 'View Demos', 'blogarise' ) ?></a>
-                        </div>
-
-                        </div>
                         </div>
                         <div class="blogarise-notice_image">
                         <?php 
