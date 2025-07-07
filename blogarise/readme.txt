@@ -4,8 +4,8 @@ Author: Themeansar
 Requires at least: WordPress 6.7
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.2
-Version: 1.2.2
+Stable tag: 1.2.3
+Version: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -485,3 +485,6 @@ Fixed Heading Typography.
 
 = Version 1.2.2
 * Added Notice Links.
+
+= Version 1.2.3
+* Fixed Typography Fonts.

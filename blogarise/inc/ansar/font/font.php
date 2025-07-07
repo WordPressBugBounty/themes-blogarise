@@ -7,12 +7,27 @@ function blogarise_fonts_url() {
     $fonts_url = '';
 		
     $font_families = array();
- 
-	$font_families = array('Rubik:400,500,700|Outfit:wght@100,200,300,400,500,600,700,800,900&display=swap');
- 
+
+        $font_families = array(
+            'Outfit:300,400,500,700',
+            'Open Sans:300,400,600,700',
+            'Kalam:300,400,700',
+            'Rokkitt:300,400,700',
+            'Jost:300,400,500,700',
+            'Poppins:300,400,500,600,700',
+            'Lato:300,400,700',
+            'Noto Serif:300,400,700',
+            'Raleway:300,400,500,700',
+            'Roboto:300,400,500,700',
+            'Rubik:300,400,500,700',
+            'Josefin Sans:300,400,500,700',
+        );
+
+        // Build the URL
         $query_args = array(
             'family' => urlencode( implode( '|', $font_families ) ),
-            'subset' => urlencode( 'latin,latin-ext' ),
+            'display' => 'swap',
+            'subset' => 'latin,latin-ext',
         );
  
         $fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
