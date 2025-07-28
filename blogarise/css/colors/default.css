@@ -544,6 +544,9 @@ blockquote p {
 	border-color: var(--border-color);
 	color: var(--text-color);
 }
+.wp-block-latest-comments li{
+	border-color: var(--border-color);
+}
 .bs-sidebar .bs-widget ul li a {
 	color: var(--text-color);
 }
