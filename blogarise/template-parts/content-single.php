@@ -92,19 +92,11 @@
                 ?>
               </article>
             </div>
-          <?php } ?>
+          <?php }  
+          
+          do_action('blogarise_action_single_author_box');
 
-           <?php $blogarise_enable_single_admin_details = esc_attr(get_theme_mod('blogarise_enable_single_admin_details','true'));
-            if($blogarise_enable_single_admin_details == true) { ?>
-           <div class="bs-info-author-block py-4 px-3 mb-4 flex-column justify-content-center text-center">
-            <a class="bs-author-pic mb-3" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a>
-                <div class="flex-grow-1">
-                  <h4 class="title"><?php esc_html_e('By','blogarise'); ?> <a href ="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                  <p><?php the_author_meta( 'description' ); ?></p>
-                </div>
-            </div>
-             <?php } ?>
-            <?php $blogarise_enable_related_post = esc_attr(get_theme_mod('blogarise_enable_related_post','true'));
+          $blogarise_enable_related_post = esc_attr(get_theme_mod('blogarise_enable_related_post','true'));
                   $blogarise_enable_single_post_category = get_theme_mod('blogarise_enable_single_post_category','true');
                   $blogarise_enable_single_post_date = get_theme_mod('blogarise_enable_single_post_date','true');
                                 if($blogarise_enable_related_post == true){
@@ -167,11 +159,9 @@
                           </div>
                     </div>
                     <!--End bs-realated-slider -->
-                  <?php } } $blogarise_enable_single_post_comments = esc_attr(get_theme_mod('blogarise_enable_single_post_comments',true));
-                  if($blogarise_enable_single_post_comments == true) {
-                  if (comments_open() || get_comments_number()) :
-                  comments_template();
-                  endif; } ?>
+                  <?php } } 
+                  do_action('blogarise_action_single_comments_box'); 
+                  ?>
       </div>
 
       <?php if($blogarise_single_page_layout == "single-align-content-right") { ?>
