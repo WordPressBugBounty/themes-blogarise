@@ -88,9 +88,9 @@ if (!function_exists('get_archive_title')) :
         }
         
         if (is_category()) {
-            $title = single_cat_title();
+            $title = single_cat_title('', false);
         } elseif (is_tag()) {
-            $title = single_tag_title();
+            $title = single_tag_title('', false);
         } elseif (is_author()) {
             $title = get_the_author();
         } elseif (is_year()) {
