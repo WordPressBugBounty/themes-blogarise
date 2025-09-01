@@ -57,6 +57,75 @@ if (!function_exists('blogarise_single_author_box')) :
 endif;
 add_action('blogarise_action_single_author_box', 'blogarise_single_author_box', 40);
 
+if (!function_exists('blogarise_single_related_box')) :
+    function blogarise_single_related_box() {
+        $blogarise_enable_related_post = esc_attr(get_theme_mod('blogarise_enable_related_post','true'));
+        $blogarise_enable_single_post_category = get_theme_mod('blogarise_enable_single_post_category','true');
+        $blogarise_enable_single_post_date = get_theme_mod('blogarise_enable_single_post_date','true');
+        if($blogarise_enable_related_post == true){ ?>
+            <div class="py-4 px-3 mb-4 bs-card-box bs-single-related">
+                <!--Start bs-realated-slider -->
+                <!-- bs-sec-title -->
+                <div class="bs-widget-title  mb-3">
+                    <?php $blogarise_related_post_title = get_theme_mod('blogarise_related_post_title', esc_html__('Related Post','blogarise'))?>
+                    <h4 class="title"><?php echo esc_html($blogarise_related_post_title);?></h4>
+                </div>
+                <!-- // bs-sec-title -->
+                <div class="related-post">
+                    <div class="row">
+                        <!-- featured_post -->
+                        <?php global $post;
+                        $categories = get_the_category($post->ID);
+                        $number_of_related_posts = 3;
+
+                        if ($categories) {
+                            $cat_ids = array();
+                            foreach ($categories as $category) $cat_ids[] = $category->term_id;
+                            $args = array(
+                                'category__in' => $cat_ids,
+                                'post__not_in' => array($post->ID),
+                                'posts_per_page' => $number_of_related_posts, // Number of related posts to display.
+                                'ignore_sticky_posts' => 1
+                            );
+                            $related_posts = new wp_query($args);
+                            while ($related_posts->have_posts()) {
+                                $related_posts->the_post();
+                                global $post;
+                                $url = blogarise_get_freatured_image_url($post->ID, 'blogarise-featured');
+                                ?>
+                                <!-- blog -->
+                                <div class="col-md-4">
+                                  <div class="bs-blog-post three md back-img bshre mb-md-0" <?php if(has_post_thumbnail()) { ?> style="background-image: url('<?php echo esc_url($url); ?>');" <?php } ?>>
+                                    <a class="link-div" href="<?php the_permalink(); ?>"></a>
+                                    <div class="inner">
+                                        <?php if($blogarise_enable_single_post_category == true) { blogarise_post_categories(); } 
+                                        $blogarise_enable_single_post_admin_details = esc_attr(get_theme_mod('blogarise_enable_single_post_admin_details','true')); ?>
+                                        <h4 class="title sm mb-0"> 
+                                            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
+                                                <?php the_title(); ?>
+                                            </a> 
+                                        </h4>
+                                      <div class="bs-blog-meta">
+                                        <?php if($blogarise_enable_single_post_admin_details == true) { blogarise_author_content(); }
+                                        if($blogarise_enable_single_post_date == true) { blogarise_date_content(); } ?>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- blog -->
+                            <?php }
+                        }
+                        wp_reset_postdata();
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <!--End bs-realated-slider -->
+        <?php }
+    }
+endif;
+add_action('blogarise_action_single_related_box', 'blogarise_single_related_box', 40);
+
 if (!function_exists('blogarise_single_comments_box')) :
     function blogarise_single_comments_box() { 
         $blogarise_enable_single_post_comments = esc_attr(get_theme_mod('blogarise_enable_single_post_comments',true));
