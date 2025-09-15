@@ -107,7 +107,7 @@ if (!function_exists('blogarise_single_content')) :
               <article class="small single">
                 <?php the_content(); ?>
                 <?php blogarise_edit_link(); ?>
-                <?php  blogarise_social_share_post($post); ?>
+                <?php blogarise_social_share_post(get_post()); ?>
                 <div class="clearfix mb-3"></div>
                 <?php
                   $prev =  (is_rtl()) ? " fa-angle-double-right" : " fa-angle-double-left";
