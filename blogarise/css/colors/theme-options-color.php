@@ -1,7 +1,6 @@
 <?php
 function theme_options_color() {
 	
-
 	/*=================== Site Title & Tagline Color ===================*/
 	$header_textcolor = get_theme_mod('header_textcolor', "000");
 	$header_textcolor_dark_layout = get_theme_mod('header_textcolor_dark_layout', "#fff"); 

@@ -2,10 +2,10 @@
 Contributors: Themeansar
 Author: Themeansar
 Requires at least: WordPress 6.7
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.3.5
-Version: 1.3.5
+Stable tag: 1.5.2
+Version: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -524,3 +524,54 @@ Fixed Heading Typography.
 
 = Version 1.3.5
 1. Fixed Footer menus Styling Issues.
+
+= Version 1.3.6
+1. Fixed Inputs RTL Styling Issues.
+
+= Version 1.3.7
+1. Fixed Category Count Styling.
+
+= Version 1.3.8
+1. Fixed Security Issues.
+
+= Version 1.3.9
+1. Added Theme Support Function. 
+
+= Version 1.4.0
+1. Fixed Inputs Color Issue on Dark Mode.
+
+= Version 1.4.1
+1. Added Woocommerce Category on Products.
+
+= Version 1.4.2
+1. Fixed Product Meta Issue on Search Page
+
+= Version 1.4.3
+1. Fixed WooCommerce Product Page Styling Issues.
+
+= Version 1.4.4
+1. Fixed WooCommerce Product Styling Issues.
+
+= Version 1.4.5
+1. Fixed WooCommerce Product Single Styling Issues. 
+
+= Version 1.4.6
+1. Fixed WooCommerce Product Price Color Issues.
+
+= Version 1.4.7
+1. Fixed Shop Page Pagination Styling.
+
+= Version 1.4.8
+1. Added Theme Color CSS Variable.
+
+= Version 1.4.9
+1. Fixed Menus Styling Issues.
+
+= Version 1.5.0
+1. Fixed Translating Issues.
+
+= Version 1.5.1
+1. Added Border Color CSS Variable.
+
+= Version 1.5.2
+1. Added Gradient Color Variable.

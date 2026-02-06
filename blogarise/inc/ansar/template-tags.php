@@ -31,7 +31,7 @@ if (!function_exists('blogarise_post_categories')) :
                     $term_meta = get_option($color_id);
                     $color_class = ($term_meta) ? $term_meta['color_class_term_meta'] : 'category-color-1';
 
-                    $output .= '<a class="blogarise-categories ' . esc_attr($color_class) . '" href="' . esc_url(get_category_link($post_category)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'blogarise'), $post_category->name)) . '"> 
+                    $output .= '<a class="blogarise-categories ' . esc_attr($color_class) . '" href="' . esc_url(get_category_link($post_category)) . '" title="' . esc_attr(sprintf(__('View all posts in %s', 'blogarise'), $post_category->name)) . '"> 
                                  ' . esc_html($post_category->name) . '
                              </a>';
                 }
@@ -58,7 +58,7 @@ endif;
 if ( ! function_exists( 'blogarise_date_content' ) ) :
     function blogarise_date_content() { ?>
       <span class="bs-blog-date">
-        <a href="<?php echo esc_url(get_month_link(esc_html(get_post_time('Y')),esc_html(get_post_time('m')))); ?>"><time datetime=""><?php echo esc_html(get_the_date()); ?></time></a>
+        <a href="<?php echo esc_url(get_month_link(esc_html(get_post_time('Y')),esc_html(get_post_time('m')))); ?>"><time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date()); ?></time></a>
       </span>
 <?php }
 endif;
@@ -79,7 +79,7 @@ if (!function_exists('get_archive_title')) :
         
         if (class_exists('WooCommerce')) {
             if (is_shop()) {
-                $title = 'Shop';
+                $title = __('Shop', 'blogarise');
             } elseif (is_product_category()) {
                 $title = single_term_title('', false);
             } elseif (is_product_tag()) {
@@ -145,7 +145,7 @@ if (!function_exists('blogarise_post_item_tag')) :
             $tags_list = get_the_tag_list('', esc_html_x('', 'list item separator', 'blogarise'));
             if ($tags_list) {
                 /* translators: 1: list of tags. */
-                printf('<span class="tags-links">' . esc_html('Tags: %1$s') . '</span>', $tags_list); // WPCS: XSS OK.
+                printf('<span class="tags-links">' . esc_html__('Tags: %1$s', 'blogarise') . '</span>', $tags_list); // WPCS: XSS OK.
             }
         }
 
@@ -194,10 +194,10 @@ if (!function_exists('blogarise_post_meta')) :
                 <a href="<?php the_permalink(); ?>">
                     <?php
                     if ( get_comments_number() == 0 ) {
-                        esc_html_e(  __('No Comments', 'blogarise') );
+                        esc_html_e( 'No Comments', 'blogarise' );
                     } else {
                         echo get_comments_number() . ' ';
-                        esc_html_e( get_comments_number() == 1 ? __('Comment', 'blogarise') : __('Comments', 'blogarise') );
+                        echo esc_html( get_comments_number() == 1 ? __('Comment', 'blogarise') : __('Comments', 'blogarise') );
                     } ?>
                 </a> 
             </span>
