@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogarise/
 Author: Themeansar
 Author URI: http://themeansar.com
 Description: BlogArise is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. BlogArise is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. BlogArise is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogarise-demos/ and documentation at https://docs.themeansar.com/docs/blogarise/
-Version: 1.5.3
+Version: 1.5.4
 Tested up to: 6.9
 Requires PHP: 7.4
 Requires at least: 6.7
@@ -2028,7 +2028,7 @@ html {
 }
 
 .bs-blog-post .bs-blog-category {
-	justify-content: flex-start;
+	justify-content: start;
 }
 
 .bs-blog-post:hover {
@@ -4165,6 +4165,8 @@ blockquote.right {
 
 .widget_block .wp-block-search__button {
 	padding: 10px;
+    margin-right: 10px;
+    margin-left: 0;
 }
 
 .nav.navbar-nav:not(.sm-collapsible) .nav-link .sub-arrow {
@@ -4441,7 +4443,7 @@ a,
 	.bs-slide .inner .title,
 	.bs-blog-post .title {
 		font-size: 22px;
-		text-align: center;
+		text-align: start;
 	}
 
 	.bs-blog-post.single .bs-header .title {
@@ -4461,7 +4463,11 @@ a,
 	}
 
 	.bs-blog-post .bs-blog-meta {
-		justify-content: center;
+		justify-content: start;
+	}
+
+	.bs-blog-post .bs-header .bs-blog-meta{
+		justify-content: start;
 	}
 
 	.bs-posts-sec-post {
