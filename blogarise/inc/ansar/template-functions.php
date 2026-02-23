@@ -205,16 +205,17 @@ add_action('wp_footer','blogarise_footer_logo_size');
 
 function blogarise_social_share_post($post) {
 
-    $single_show_share_icon = get_theme_mod('single_show_share_icon','true');
+    $single_show_share_icon = get_theme_mod('single_show_share_icon',true);
         if($single_show_share_icon == true) {
-        $post_link  = get_permalink();
+        $post_link = urlencode( get_permalink() );
+        // $post_link  = get_permalink();
         $post_title = get_the_title();
 
         $facebook_url = add_query_arg(
         array(
         'u' => $post_link,
         ),
-        'https://www.facebook.com/sharer.php'
+        'https://www.facebook.com/sharer/sharer.php'
         );
 
         $twitter_url = add_query_arg(
@@ -285,49 +286,49 @@ function blogarise_social_share_post($post) {
         <div class="post-share-icons cf"> 
             <?php $blogarise_blog_share_facebook_enable = get_theme_mod('blogarise_blog_share_facebook_enable','true');
             if($blogarise_blog_share_facebook_enable == true) { ?>
-                <a class="facebook" href="<?php echo esc_url("$facebook_url"); ?>" class="link " target="_blank" >
+                <a class="facebook" href="<?php echo esc_url($facebook_url); ?>" class="link " target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-facebook"></i>
                 </a>
             <?php } 
             $blogarise_blog_share_twitter_enable = get_theme_mod('blogarise_blog_share_twitter_enable','true');
             if($blogarise_blog_share_twitter_enable == true) { ?>
-                <a class="x-twitter" href="<?php echo esc_url("$twitter_url"); ?>" class="link " target="_blank">
+                <a class="x-twitter" href="<?php echo esc_url($twitter_url); ?>" class="link " target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-x-twitter"></i>
                 </a>
             <?php } 
             $blogarise_blog_share_email_enable = get_theme_mod('blogarise_blog_share_email_enable','true');
             if($blogarise_blog_share_email_enable == true) { ?>
-                <a class="envelope" href="<?php echo esc_url("$email_url"); ?>" class="link " target="_blank" >
+                <a class="envelope" href="<?php echo esc_url($email_url); ?>" class="link " target="_blank">
                     <i class="fas fa-envelope-open"></i>
                 </a>
             <?php } 
             $blogarise_blog_share_linkdin_enable = get_theme_mod('blogarise_blog_share_linkdin_enable','true');
             if($blogarise_blog_share_linkdin_enable == true) { ?>
-                <a class="linkedin" href="<?php echo esc_url("$linkedin_url"); ?>" class="link " target="_blank" >
+                <a class="linkedin" href="<?php echo esc_url($linkedin_url); ?>" class="link " target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-linkedin"></i>
                 </a>
             <?php  } 
             $blogarise_blog_share_pintrest_enable = get_theme_mod('blogarise_blog_share_pintrest_enable','true');
             if($blogarise_blog_share_pintrest_enable == true) { ?>
-                <a href="javascript:pinIt();" class="pinterest">
+                <a href="javascript:pinIt();" class="pinterest" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-pinterest"></i>
                 </a>
             <?php } 
             $blogarise_blog_share_telegram_enable = get_theme_mod('blogarise_blog_share_telegram_enable','true');
             if($blogarise_blog_share_telegram_enable == true) {?>
-                <a class="telegram" href="<?php echo esc_url("$telegram_url"); ?>" target="_blank" >
+                <a class="telegram" href="<?php echo esc_url($telegram_url); ?>" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-telegram"></i>
                 </a>
             <?php } 
             $blogarise_blog_share_whatsapp_enable = get_theme_mod('blogarise_blog_share_whatsapp_enable','true');
             if($blogarise_blog_share_whatsapp_enable == true) { ?>
-                <a class="whatsapp" href="<?php echo esc_url("$whatsapp_url"); ?>" target="_blank" >
+                <a class="whatsapp" href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i>
                 </a>
             <?php } 
             $blogarise_blog_share_reddit_enable = get_theme_mod('blogarise_blog_share_reddit_enable','true');
             if($blogarise_blog_share_reddit_enable == true) { ?>
-                <a class="reddit" href="<?php echo esc_url("$reddit_url"); ?>" target="_blank" >
+                <a class="reddit" href="<?php echo esc_url($reddit_url); ?>" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-reddit"></i>
                 </a>
             <?php } ?>
