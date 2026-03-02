@@ -10,7 +10,7 @@
 
 	var myCustomizer = window.parent.window.wp.customize;
 
-	console.log(php_obj.current_theme);
+	// console.log(php_obj.current_theme);
 	
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
