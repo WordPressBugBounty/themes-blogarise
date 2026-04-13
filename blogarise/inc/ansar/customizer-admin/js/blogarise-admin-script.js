@@ -1,6 +1,6 @@
 (function ($) {
   $(document).ready(function () {
-    $('.blogarise-btn-get-started').on('click', function (e) {
+    $('.blogarise-btn-get-started.load').on('click', function (e) {
       e.preventDefault();
       if (!blogarise_ajax_object.can_install) {
         alert(blogarise_ajax_object.i18n.error_access);
