@@ -166,3 +166,20 @@
 	justify-content: center;
 	gap: 10px;
 }
+
+.woocommerce div.product .product_meta>span {
+    display: block;
+}
+
+.woocommerce table.shop_attributes th{
+	text-align: center;
+}
+
+.woocommerce table.shop_attributes td p{
+	padding: 8px 12px;
+}
+
+.woocommerce div.product .woocommerce-tabs .panel h2{
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+}
