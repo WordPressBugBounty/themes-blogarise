@@ -99,7 +99,7 @@ li.customize-control-color .wp-picker-container .wp-color-result.button {
 .blogarise-notice_text .notice p, .notice-title, div.updated p, div.error p, .form-table td .notice p  {padding-right: 25px; font-size: 15px;}
 
 .dashicons-external:before {
-  color: #2271b1;
+  color: var(--wp-admin-theme-color);
 }
 #customize-controls .ui-checkboxradio-radio-label{
 	padding: 0;
@@ -150,11 +150,15 @@ li.customize-control-color .wp-picker-container .wp-color-result.button {
 }
 .blogarise-notice-link{ 
   display:inline;
-  color: #2271b1;
+  color: var(--wp-admin-theme-color);
 }
 .admin-bar .blogarise-btn-get-started, .admin-bar .blogarise-btn-get-started-customize{
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+.admin-bar .blogarise-notice-buttons :is( .blogarise-btn-get-started, .blogarise-btn-get-started-customize) .dashicons {
+    line-height: 1.2;
+    color: inherit !important;
 }
