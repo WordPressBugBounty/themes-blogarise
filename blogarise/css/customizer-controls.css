@@ -162,3 +162,13 @@ li.customize-control-color .wp-picker-container .wp-color-result.button {
     line-height: 1.2;
     color: inherit !important;
 }
+/* admin notice media query */
+@media(max-width: 767px){  
+  .blogarise-notice-started .blogarise-notice-content{
+    flex-direction: column;
+    gap: 30px;
+  }
+  .blogarise-notice-content .blogarise-notice_image{
+    max-width: 80%;
+  }
+}
