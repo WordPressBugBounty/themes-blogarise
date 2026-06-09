@@ -1,6 +1,6 @@
 body #accordion-section-blogarise_pro_upsell h3 {
-    background-image: linear-gradient(-200deg, #ffcc00 0%, #202f5b 100%) !important;
+    background-color: #ffcc00 !important;
     border-left: 0 !important;
-    color: #fff !important;
+    color: #000 !important;
     padding: 20px 20px 20px 20px;
 }
