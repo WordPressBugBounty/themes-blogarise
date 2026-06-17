@@ -172,3 +172,20 @@ li.customize-control-color .wp-picker-container .wp-color-result.button {
     max-width: 80%;
   }
 }
+#customize-control-breadcrumb_settings .customize-control-description {
+  flex: 0 0 95%;
+  padding-top: 15px;
+  border-top: 1px solid #dfdfdf;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+  font-size: 14px;
+  margin-top: 8px;
+}
+[id*="bcrumb"]:not(:nth-last-child(2)) {
+  margin-bottom: 0;
+}
+[id*="bcrumb"] .customize-inside-control-row{
+  font-weight: 500;
+  font-size: 14px;
+}

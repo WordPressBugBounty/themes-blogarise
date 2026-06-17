@@ -5,6 +5,7 @@
  */
 ?>
 <!--==================== breadcrumb section ====================-->
+<?php if(get_theme_mod('enable_single_bcrumb',true)) { do_action('blogarise_breadcrumb_content'); } ; ?>
   <!--col-lg-->
   <?php $blogarise_single_page_layout = get_theme_mod('blogarise_single_page_layout','single-align-content-right');
   if($blogarise_single_page_layout == "single-align-content-left") { ?>

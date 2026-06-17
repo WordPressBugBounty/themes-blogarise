@@ -691,10 +691,65 @@ $wp_customize->add_setting('breadcrumb_settings',
 $wp_customize->add_control(new Blogarise_Toggle_Control( $wp_customize, 'breadcrumb_settings', 
     array(
         'label' => esc_html__('Hide/Show Breadcrumb', 'blogarise'),
+        'description' => __('Hide/Show on', 'blogarise'),
         'type' => 'toggle',
         'section' => 'blogarise_breadcrumb_settings',
     )
 ));
+
+$wp_customize->add_setting('enable_archive_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogarise_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_archive_bcrumb',
+    array(
+        'label' => esc_html__('Archive Pages', 'blogarise'),
+        'section' => 'blogarise_breadcrumb_settings',
+        'type' => 'checkbox',
+
+    )
+);
+$wp_customize->add_setting('enable_single_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogarise_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_single_bcrumb',
+    array(
+        'label' => esc_html__('Single Pages', 'blogarise'),
+        'section' => 'blogarise_breadcrumb_settings',
+        'type' => 'checkbox',
+    )
+);
+$wp_customize->add_setting('enable_search_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogarise_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_search_bcrumb',
+    array(
+        'label' => esc_html__('Search', 'blogarise'),
+        'section' => 'blogarise_breadcrumb_settings',
+        'type' => 'checkbox',
+    )
+);
+$wp_customize->add_setting('enable_pages_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogarise_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_pages_bcrumb',
+    array(
+        'label' => esc_html__('Pages', 'blogarise'),
+        'section' => 'blogarise_breadcrumb_settings',
+        'type' => 'checkbox',
+    )
+);
 
 //Type Of Bredcrumb 
 $wp_customize->add_setting( 'blogarise_site_breadcrumb_type', array(
