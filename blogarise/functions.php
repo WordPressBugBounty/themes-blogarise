@@ -180,16 +180,13 @@ add_action( 'after_setup_theme', 'blogarise_setup' );
 		if ( function_exists( 'the_custom_logo' ) ) {
 			the_custom_logo();
 		}
-
 	}
-
 	add_filter('get_custom_logo','blogarise_logo_class');
 
 
-	function blogarise_logo_class($html)
-	{
-	$html = str_replace('custom-logo-link', 'navbar-brand', $html);
-	return $html;
+	function blogarise_logo_class($html) {
+		$html = str_replace('custom-logo-link', 'navbar-brand', $html);
+		return $html;
 	}
 
 	/**
@@ -232,8 +229,6 @@ function blogarise_widgets_init() {
 		'before_title'  => '<div class="bs-widget-title"><h2 class="title">',
 		'after_title'   => '</h2></div>',
 	) );
-
-
 	
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Widget Area', 'blogarise' ),

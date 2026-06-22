@@ -188,21 +188,6 @@ function blogarise_hide_shop_page_title( $title ) {
     return $title;
 }
 
-
-function blogarise_footer_logo_size()
-{
-    $blogarise_footer_logo_width = get_theme_mod('blogarise_footer_logo_width','210');
-    $blogarise_footer_logo_height = get_theme_mod('blogarise_footer_logo_height','70');
-    ?>
-<style>
-    footer .footer-logo img{
-        width: <?php echo esc_attr($blogarise_footer_logo_width); ?>px;
-        height: <?php echo esc_attr($blogarise_footer_logo_height); ?>px;
-    } 
-</style>
-<?php } 
-add_action('wp_footer','blogarise_footer_logo_size');
-
 function blogarise_social_share_post($post) {
 
     $single_show_share_icon = get_theme_mod('single_show_share_icon',true);

@@ -143,4 +143,17 @@ function custom_typography_function() { ?>
 }
 </style>
 <?php }
-?>
+
+function blogarise_customize_options() {
+
+    // Initialize string
+    $blogarise_custom_css = '';
+	
+	$all_defaults = blogarise_get_default_theme_options();
+	
+    $blogarise_custom_css .= ' footer .footer-logo img{ width: '. esc_attr(get_theme_mod('blogarise_footer_logo_width','210')).'px; height: '. esc_attr(get_theme_mod('blogarise_footer_logo_height','70')).'px;}';
+
+    if ( ! empty( $blogarise_custom_css ) ) {
+        wp_add_inline_style( 'blogarise-style', $blogarise_custom_css );
+    }
+}

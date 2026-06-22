@@ -50,7 +50,8 @@
 	}
 	
     wp_enqueue_script('jquery-cookie', get_template_directory_uri() . '/js/jquery.cookie.min.js', array('jquery'));
-
+	
+	blogarise_customize_options();
 }
 add_action('wp_enqueue_scripts', 'blogarise_scripts');
 function blogarise_admin_enqueue( $hook ) {

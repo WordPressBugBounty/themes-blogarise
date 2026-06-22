@@ -4,11 +4,12 @@ if( ! function_exists( 'blogarise_register_custom_controls' ) ) :
  * Register Custom Controls
 */
 function blogarise_register_custom_controls( $wp_customize ) {
+    $blogarise_control_path = get_template_directory() . '/inc/ansar/custom-control/';
 
-    require_once get_template_directory() . '/inc/ansar/custom-control/toggle/class-toggle-control.php';
-    require_once get_template_directory() . '/inc/ansar/custom-control/customizer-alpha-color-picker/class-blogarise-customize-alpha-color-control.php';
+    require_once $blogarise_control_path . 'toggle/class-toggle-control.php';
+    require_once $blogarise_control_path . 'customizer-alpha-color-picker/class-blogarise-customize-alpha-color-control.php';
 
-    require_once  get_template_directory() . '/inc/ansar/custom-control/custom_tab_control/custom_tab_control_class.php';
+    require_once  $blogarise_control_path . 'custom_tab_control/custom_tab_control_class.php';
 
     $wp_customize->register_control_type( 'Blogarise_Toggle_Control' );
 
