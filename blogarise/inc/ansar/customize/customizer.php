@@ -367,6 +367,24 @@ function blogarise_theme_option( $wp_customize ) {
         return wp_kses_post( force_balance_tags( $input ) );
     }
 
+    $wp_customize->get_control( 'display_header_text')->label = __('Display Site Title', 'blogarise');
+
+    $wp_customize->add_setting('display_header_tagline',
+        array(
+            'default' => false,
+            'transport' => 'postMessage',
+            'sanitize_callback' => 'blogarise_sanitize_checkbox',
+        )
+    );
+    $wp_customize->add_control('display_header_tagline',
+        array(
+            'label' => __('Display Tagline', 'blogarise'),
+            'section' => 'title_tagline',
+            'type' => 'checkbox',
+            'priority' => 50,
+
+        )
+    );
     /*--- Site title Font size **/
     $wp_customize->add_setting('blogarise_title_font_size',
         array(

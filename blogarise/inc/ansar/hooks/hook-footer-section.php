@@ -120,10 +120,7 @@ if (!function_exists('blogarise_footer_bottom_area')) :
               <div class="site-logo">
                 <?php if(get_theme_mod('custom_logo') !== ""){ the_custom_logo(); } ?>
               </div>
-              <div class="site-branding-text">
-                <p class="site-title-footer"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-                <p class="site-description-footer"><?php bloginfo('description'); ?></p>
-              </div>
+             <?php do_action('blogarise_action_footer_site_title_tagline'); ?>
             </div>
           </div>
           <!--col-md-3-->
