@@ -263,4 +263,55 @@
 	customizePreviewStyle('blogarise_footer_overlay_color', 'footer.footer .overlay', 'background-color','');
 	customizePreviewStyle('blogarise_footer_copy_text', 'footer .bs-footer-copyright p, footer .bs-footer-copyright a', 'color','');
 	customizePreviewStyle('blogarise_footer_copy_bg', 'footer .bs-footer-copyright', 'background-color','');
+
+	/**
+	 * Define the Live Preview Configuration for Range Controls.
+	 *
+	*/
+    function range_live_load( setting, selector, properties, media_query = true ) {
+        wp.customize( setting, function( value ) {
+            value.bind( function( to ) {
+                var data = {};
+                try {
+                    data = JSON.parse( to );
+                } catch ( e ) {
+                    data = { desktop: to };
+                }
+                var unit = data.unit || '';
+
+                var build = function( value ) {
+
+                    if ( value === '' ) {
+                        return '';
+                    }
+
+                    var css = '';
+
+                    properties.forEach( function( property ) {
+                        css += property + ':' + value + unit + ';';
+                    } );
+
+                    return css;
+                };
+
+                var css = selector + '{' + build( data.desktop || '' ) + '}';
+
+                if ( media_query ) {
+                    css += '@media (max-width:991px){' + selector + '{' + build( data.tablet || '' ) + '}}';
+                    css += '@media (max-width:575px){' + selector + '{' + build( data.mobile || '' ) + '}}';
+                }
+
+                var style = 'customizer-' + setting;
+
+                $( '.' + style ).remove();
+                $( 'head' ).append( '<style class="' + style + '">' + css + '</style>' );
+
+            } );
+
+        } );
+
+    }
+
+    range_live_load( 'side_main_logo_width', '.site-logo a.navbar-brand', [ 'width' ] );
+
 } )( jQuery );

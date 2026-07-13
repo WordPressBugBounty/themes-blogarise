@@ -71,6 +71,9 @@ function blogarise_get_default_theme_options() {
     $defaults['single_show_featured_image'] = true;
     $defaults['single_show_share_icon'] = true;
 
+    // Logo.
+    $defaults['side_main_logo_width'] = wp_json_encode( array( 'desktop' => '250', 'tablet'  => '200','mobile'  => '150', 'unit' => 'px',) ) ;
+
     // filter.
     $defaults = apply_filters('blogarise_filter_default_theme_options', $defaults);
 

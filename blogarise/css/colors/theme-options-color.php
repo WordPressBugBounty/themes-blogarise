@@ -152,6 +152,28 @@ function blogarise_customize_options() {
 	$all_defaults = blogarise_get_default_theme_options();
 	
     $blogarise_custom_css .= ' footer .footer-logo img{ width: '. esc_attr(get_theme_mod('blogarise_footer_logo_width','210')).'px; height: '. esc_attr(get_theme_mod('blogarise_footer_logo_height','70')).'px;}';
+	
+	$rangeValue = array(
+
+		'.site-logo a.navbar-brand' => array(
+			array( 'key' => 'side_main_logo_width', 'property' => 'width', 'media_query' => true, ),
+		),
+	);
+	
+	foreach ( $rangeValue as $selector => $properties ) {
+		foreach ( $properties as $setting ) {
+			$key         = $setting['key'];
+			$default_val = isset( $defaults[ $key ] ) ? $defaults[ $key ] : '';
+
+			$blogarise_custom_css .= blogarise_range_css(
+				$selector,
+				$default_val,
+				get_theme_mod( $key, $default_val ),
+				$setting['property'],
+				isset( $setting['media_query'] ) ? $setting['media_query'] : true
+			);
+		}
+	}
 
     if ( ! empty( $blogarise_custom_css ) ) {
         wp_add_inline_style( 'blogarise-style', $blogarise_custom_css );

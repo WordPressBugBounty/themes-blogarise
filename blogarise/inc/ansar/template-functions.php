@@ -36,9 +36,6 @@ function blogarise_body_classes($classes)
 
     global $post;
 
-    
-
-
     $global_alignment = blogarise_get_option('blogarise_content_layout');
     $page_layout = $global_alignment;
     $disable_class = '';
@@ -57,7 +54,6 @@ function blogarise_body_classes($classes)
         }
     }
 
-
     if ( isset( $_COOKIE["blogarise-site-mode-cookie"] ) ) {
         $classes[] = $_COOKIE["blogarise-site-mode-cookie"];
     } else {
@@ -74,8 +70,7 @@ add_filter('body_class', 'blogarise_body_classes');
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
-function blogarise_pingback_header()
-{
+function blogarise_pingback_header() {
     if (is_singular() && pings_open()) {
         echo '<link rel="pingback" href="', esc_url(get_bloginfo('pingback_url')), '">';
     }
@@ -465,6 +460,113 @@ $color = get_theme_mod( 'background_color', get_theme_support( 'custom-backgroun
 </style>
 <?php }
 add_action('wp_head','blogarise_custom_header_background');
+
+/**
+ * Generate CSS for range controls.
+ *
+ * @param string       $selector
+ * @param mixed        $default_val
+ * @param mixed        $current_val
+ * @param string|array $css_prop
+ * @param bool         $media_query
+ *
+ * @return string
+ */
+function blogarise_range_css( $selector, $default_val, $current_val, $css_prop, $media_query = true ) {
+
+    $defaults = array(
+        'desktop' => '',
+        'tablet'  => '',
+        'mobile'  => '',
+        'unit'    => '',
+    );
+
+    $current = $defaults;
+
+    // Default values.
+    if ( is_string( $default_val ) ) {
+
+        $decoded = json_decode( $default_val, true );
+
+        if ( is_array( $decoded ) ) {
+            $defaults = array_merge( $defaults, $decoded );
+        } else {
+            $defaults['desktop'] = $default_val;
+        }
+
+    } elseif ( is_numeric( $default_val ) ) {
+
+        $defaults['desktop'] = $default_val;
+
+    }
+
+    // Current values.
+    if ( is_string( $current_val ) ) {
+
+        $decoded = json_decode( $current_val, true );
+
+        if ( is_array( $decoded ) ) {
+            $current = array_merge( $current, $decoded );
+        } else {
+            $current['desktop'] = $current_val;
+        }
+
+    } elseif ( is_numeric( $current_val ) ) {
+
+        $current['desktop'] = $current_val;
+
+    }
+
+    $unit = ! empty( $current['unit'] ) ? $current['unit'] : $defaults['unit'];
+
+    $build_rule = function( $value ) use ( $css_prop, $unit ) {
+
+        $css = '';
+
+        if ( is_array( $css_prop ) ) {
+
+            foreach ( $css_prop as $property ) {
+                $css .= "{$property}: " . esc_attr( $value ) . "{$unit}; ";
+            }
+
+        } else {
+
+            $css .= "{$css_prop}: " . esc_attr( $value ) . "{$unit}; ";
+
+        }
+
+        return $css;
+    };
+
+    $css = '';
+
+    // Non-responsive.
+    if ( ! $media_query ) {
+
+        if ( '' !== $current['desktop'] && $current['desktop'] !== $defaults['desktop'] ) {
+            $css .= "{$selector} { {$build_rule( $current['desktop'] )} }";
+        }
+
+        return $css;
+    }
+
+    // Desktop.
+    if ( '' !== $current['desktop'] && $current['desktop'] !== $defaults['desktop'] ) {
+        $css .= "{$selector} { {$build_rule( $current['desktop'] )} }";
+    }
+
+    // Tablet.
+    if ( '' !== $current['tablet'] && $current['tablet'] !== $defaults['tablet'] ) {
+        $css .= "@media (max-width:991px){ {$selector} { {$build_rule( $current['tablet'] )} } }";
+    }
+
+    // Mobile.
+    if ( '' !== $current['mobile'] && $current['mobile'] !== $defaults['mobile'] ) {
+        $css .= "@media (max-width:575px){ {$selector} { {$build_rule( $current['mobile'] )} } }";
+    }
+
+    return $css;
+}
 
 if ( class_exists( 'WooCommerce' ) ) {
 

@@ -363,10 +363,27 @@ add_action('customize_preview_init', 'Blogarise_Customize_preview_js');
 
 /************************* Theme Customizer with Sanitize function *********************************/
 function blogarise_theme_option( $wp_customize ) {
+
     function blogarise_sanitize_text( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
     }
 
+    $blogarise_default = blogarise_get_default_theme_options();
+
+    $wp_customize->add_setting('side_main_logo_width', array(
+        'default' => $blogarise_default['side_main_logo_width'],
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'blogarise_sanitize_range',
+    ));
+    $wp_customize->add_control(new Blogarise_Range_Control( $wp_customize, 'side_main_logo_width', array(
+        'label'       => esc_html__('Logo Width', 'blogarise'),
+        'section'     => 'title_tagline',
+        'media_query' => true,
+        'size_unit'   => array( 'px', '%', 'em', 'rem' ),
+        'input_attr'  => array('min'  => 0,'max'  => 400,'step' => 1,),
+        'priority' => 9,
+    )));
+    
     $wp_customize->get_control( 'display_header_text')->label = __('Display Site Title', 'blogarise');
 
     $wp_customize->add_setting('display_header_tagline',
