@@ -400,6 +400,31 @@ if ( ! function_exists( 'blogarise_header_site_title_tagline' ) ) :
 endif;
 add_action('blogarise_action_header_site_title_tagline','blogarise_header_site_title_tagline');
 
+if ( ! function_exists( 'blogarise_header_responsive_site_title_tagline' ) ) :
+
+   function blogarise_header_responsive_site_title_tagline() {
+    $title   = display_header_text();
+    $tagline = get_theme_mod( 'display_header_tagline', false );
+
+    $hideTitle = ( ! $title  ) ? ' d-none' : '';
+    $hideTagline = ( ! $tagline ) ? ' d-none' : '';
+    ?>    
+    <div class="site-branding-text">
+        <div class="site-title<?php echo esc_attr( $hideTitle ); ?>">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+            </a>
+        </div>
+        <p class="site-description<?php echo esc_attr( $hideTagline ); ?>">
+            <?php echo esc_html( get_bloginfo( 'description' ) ); ?>
+        </p>
+    </div>
+
+    <?php
+}
+endif;
+add_action('blogarise_action_header_responsive_site_title_tagline','blogarise_header_responsive_site_title_tagline');
+
 if ( ! function_exists( 'blogarise_footer_site_title_tagline' ) ) :
 
    function blogarise_footer_site_title_tagline() {

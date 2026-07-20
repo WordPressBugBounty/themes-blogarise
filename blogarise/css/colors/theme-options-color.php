@@ -36,7 +36,7 @@ function theme_options_color() {
 	/*=================== Slider Overlay Color ===================*/
 	$blogarise_slider_overlay_color = get_theme_mod('blogarise_slider_overlay_color','#00000099');
 	$blogarise_slider_overlay_text_color = get_theme_mod('blogarise_slider_overlay_text_color','');
-	$blogarise_slider_title_font_size = get_theme_mod('blogarise_slider_title_font_size',50);
+	$blogarise_slider_title_font_size = get_theme_mod('blogarise_slider_title_font_size');
 
 	?>
 <style type="text/css">
