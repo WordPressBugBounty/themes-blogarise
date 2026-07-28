@@ -4,10 +4,10 @@ Theme URI: https://themeansar.com/free-themes/blogarise/
 Author: Themeansar
 Author URI: http://themeansar.com
 Description: BlogArise is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. BlogArise is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. BlogArise is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogarise-demos/ and documentation at https://docs.themeansar.com/docs/blogarise/
-Version: 1.7.2
+Version: 1.7.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Requires at least: 6.7
+Requires at least: 6.0
 Tags: two-columns, three-columns, left-sidebar, right-sidebar, translation-ready, custom-background, custom-logo, featured-images, footer-widgets, full-width-template, blog, e-commerce, entertainment
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -392,10 +392,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	text-rendering: optimizeSpeed;
 }
 .alignright {
-	text-align: right;
+	text-align: end;
 }
 .alignleft {
-	text-align: left;
+	text-align: start;
 }
 .aligncenter {
 	text-align: center;
@@ -1930,7 +1930,7 @@ html {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 1.5rem;
-	text-align: left;
+	text-align: start;
 	padding: 45px;
 	transition: 0.3s;
 }
@@ -2053,7 +2053,7 @@ html {
 .bs-widget .small-post-content .title {
 	font-weight: 600;
 	line-height: 1.2;
-	text-align: left;
+	text-align: start;
 }
 /*----- blog-post slider -----*/
 .mainfeatured {
@@ -2287,7 +2287,7 @@ html {
 }
 /*----- blog-post single -----*/
 .bs-blog-post.single {
-	text-align: left;
+	text-align: start;
 }
 .bs-blog-post.single .bs-header .title {
 	font-size: 38px;
@@ -2374,7 +2374,7 @@ html {
 	list-style: none;
 }
 .comment-body .reply {
-	text-align: right;
+	text-align: end;
 }
 
 #comments img {
@@ -2774,7 +2774,7 @@ html {
 }
 .bs-widget .calendar_wrap table tfoot tr td#next {
 	padding: 5px;
-	text-align: right;
+	text-align: end;
 	text-transform: uppercase;
 }
 .bs-widget .calendar_wrap .wp-calendar-nav {
@@ -3132,14 +3132,14 @@ img.alignnone {
 }
 blockquote.left {
 	margin-right: 20px;
-	text-align: right;
+	text-align: end;
 	margin-left: 0;
 	width: 33%;
 	float: left;
 }
 blockquote.right {
 	margin-left: 20px;
-	text-align: left;
+	text-align: start;
 	margin-right: 0;
 	width: 33%;
 	float: right;

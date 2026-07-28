@@ -1,11 +1,11 @@
 ﻿=== BlogArise ===
 Contributors: Themeansar
 Author: Themeansar
-Requires at least: WordPress 6.7
+Requires at least: WordPress 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.7.2
-Version: 1.7.2
+Stable tag: 1.7.3
+Version: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -638,3 +638,6 @@ Fixed Heading Typography.
 
 = Version 1.7.2
 1. Fixed Site Title and Tagline visibility on responsive devices.
+
+= Version 1.7.3
+1. Fixed styling issues.
