@@ -22,9 +22,17 @@
 
 	// Theme version.
 	$blogarise_theme = wp_get_theme();
-	define( 'blogarise_THEME_VERSION', $blogarise_theme->get( 'Version' ) );
-	define ( 'blogarise_THEME_NAME', $blogarise_theme->get( 'Name' ) );
 
+	if ( ! defined( 'BLOGARISE_THEME_VERSION' ) ) {
+		define( 'BLOGARISE_THEME_VERSION', $blogarise_theme->get( 'Version' ) );
+	}
+	if ( ! defined( 'BLOGARISE_THEME_NAME' ) ) {
+		define( 'BLOGARISE_THEME_NAME', $blogarise_theme->get( 'Name' ) );
+	}
+	if ( ! defined( 'BLOGARISE_THEMEURI' ) ) {
+		define( 'BLOGARISE_THEMEURI', $blogarise_theme->get( 'ThemeURI' ) );
+	}
+	
 	/*-----------------------------------------------------------------------------------*/
 	/*	Enqueue scripts and styles.
 	/*-----------------------------------------------------------------------------------*/

@@ -65,7 +65,9 @@ if( ! function_exists( 'blogarise_footer_copyright' ) ) :
                 echo '<span class="copyright-text">' . esc_html($blogarise_footer_copyright) .'</span>';
               ?>
               <span class="sep"> | </span>
-              <?php  printf(esc_html__('%1$s by %2$s.', 'blogarise'), '<a href="https://themeansar.com/free-themes/blogarise/" target="_blank">Blogarise</a>', '<a href="https://themeansar.com" target="_blank">Themeansar</a>'); ?>
+              <?php
+              $themeName = !empty(BLOGARISE_THEMEURI) ? '<a href="' . esc_url( BLOGARISE_THEMEURI ) . '" target="_blank">' . esc_html( BLOGARISE_THEME_NAME ) . '</a>': esc_html( BLOGARISE_THEME_NAME );
+              printf(esc_html__('%1$s by %2$s.', 'blogarise'), $themeName, '<a href="https://themeansar.com" target="_blank">Themeansar</a>'); ?>
             </p>
           </div>
           <?php if ( has_nav_menu( 'footer' ) ) {
