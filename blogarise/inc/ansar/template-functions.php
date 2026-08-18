@@ -498,15 +498,16 @@ add_action('wp_head','blogarise_custom_header_background');
  * @return string
  */
 function blogarise_range_css( $selector, $default_val, $current_val, $css_prop, $media_query = true ) {
-
+    
     $defaults = array(
-        'desktop' => '',
-        'tablet'  => '',
-        'mobile'  => '',
-        'unit'    => '',
+        'desktop'      => '',
+        'tablet'       => '',
+        'mobile'       => '',
+        'unit'         => '',
+        'desktop_unit' => '',
+        'tablet_unit'  => '',
+        'mobile_unit'  => '',
     );
-
-    $current = $defaults;
 
     // Default values.
     if ( is_string( $default_val ) ) {
@@ -525,6 +526,16 @@ function blogarise_range_css( $selector, $default_val, $current_val, $css_prop, 
 
     }
 
+    foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+        $unit_key = "{$device}_unit";
+
+        if ( empty( $defaults[ $unit_key ] ) ) {
+            $defaults[ $unit_key ] = $defaults['unit'];
+        }
+    }
+
+    $current = $defaults;
+
     // Current values.
     if ( is_string( $current_val ) ) {
 
@@ -542,21 +553,27 @@ function blogarise_range_css( $selector, $default_val, $current_val, $css_prop, 
 
     }
 
-    $unit = ! empty( $current['unit'] ) ? $current['unit'] : $defaults['unit'];
+    foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+        $unit_key = "{$device}_unit";
 
-    $build_rule = function( $value ) use ( $css_prop, $unit ) {
+        if ( empty( $current[ $unit_key ] ) ) {
+            $current[ $unit_key ] = ! empty( $current['unit'] ) ? $current['unit'] : $defaults[ $unit_key ];
+        }
+    }
+
+    $build_rule = function( $value, $unit ) use ( $css_prop ) {
 
         $css = '';
 
         if ( is_array( $css_prop ) ) {
 
             foreach ( $css_prop as $property ) {
-                $css .= "{$property}: " . esc_attr( $value ) . "{$unit}; ";
+                $css .= "{$property}: " . esc_attr( $value ) . esc_attr( $unit ) . "; ";
             }
 
         } else {
 
-            $css .= "{$css_prop}: " . esc_attr( $value ) . "{$unit}; ";
+            $css .= "{$css_prop}: " . esc_attr( $value ) . esc_attr( $unit ) . "; ";
 
         }
 
@@ -568,26 +585,26 @@ function blogarise_range_css( $selector, $default_val, $current_val, $css_prop, 
     // Non-responsive.
     if ( ! $media_query ) {
 
-        if ( '' !== $current['desktop'] && $current['desktop'] !== $defaults['desktop'] ) {
-            $css .= "{$selector} { {$build_rule( $current['desktop'] )} }";
+        if ( '' !== $current['desktop'] && ( $current['desktop'] !== $defaults['desktop'] || $current['desktop_unit'] !== $defaults['desktop_unit'] ) ) {
+            $css .= "{$selector} { {$build_rule( $current['desktop'], $current['desktop_unit'] )} }";
         }
 
         return $css;
     }
 
     // Desktop.
-    if ( '' !== $current['desktop'] && $current['desktop'] !== $defaults['desktop'] ) {
-        $css .= "{$selector} { {$build_rule( $current['desktop'] )} }";
+    if ( '' !== $current['desktop'] && ( $current['desktop'] !== $defaults['desktop'] || $current['desktop_unit'] !== $defaults['desktop_unit'] ) ) {
+        $css .= "{$selector} { {$build_rule( $current['desktop'], $current['desktop_unit'] )} }";
     }
 
     // Tablet.
-    if ( '' !== $current['tablet'] && $current['tablet'] !== $defaults['tablet'] ) {
-        $css .= "@media (max-width:991px){ {$selector} { {$build_rule( $current['tablet'] )} } }";
+    if ( '' !== $current['tablet'] && ( $current['tablet'] !== $defaults['tablet'] || $current['tablet_unit'] !== $defaults['tablet_unit'] ) ) {
+        $css .= "@media (max-width:991px){ {$selector} { {$build_rule( $current['tablet'], $current['tablet_unit'] )} } }";
     }
 
     // Mobile.
-    if ( '' !== $current['mobile'] && $current['mobile'] !== $defaults['mobile'] ) {
-        $css .= "@media (max-width:575px){ {$selector} { {$build_rule( $current['mobile'] )} } }";
+    if ( '' !== $current['mobile'] && ( $current['mobile'] !== $defaults['mobile'] || $current['mobile_unit'] !== $defaults['mobile_unit'] ) ) {
+        $css .= "@media (max-width:575px){ {$selector} { {$build_rule( $current['mobile'], $current['mobile_unit'] )} } }";
     }
 
     return $css;

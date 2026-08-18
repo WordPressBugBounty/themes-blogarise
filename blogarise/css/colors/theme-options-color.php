@@ -159,19 +159,17 @@ function blogarise_customize_options() {
 			array( 'key' => 'side_main_logo_width', 'property' => 'width', 'media_query' => true, ),
 		),
 	);
-	
+		
 	foreach ( $rangeValue as $selector => $properties ) {
 		foreach ( $properties as $setting ) {
 			$key         = $setting['key'];
-			$default_val = isset( $defaults[ $key ] ) ? $defaults[ $key ] : '';
+			$property    = $setting['property'];
 
-			$blogarise_custom_css .= blogarise_range_css(
-				$selector,
-				$default_val,
-				get_theme_mod( $key, $default_val ),
-				$setting['property'],
-				isset( $setting['media_query'] ) ? $setting['media_query'] : true
-			);
+			$current_val = blogarise_get_option( $key );
+			$default_val = isset( $all_defaults[$key] ) ? $all_defaults[$key] : array();
+			$media_query = isset( $setting['media_query'] ) ? $setting['media_query'] : true;
+
+			$blogarise_custom_css .= blogarise_range_css( $selector, $default_val, $current_val, $property, $media_query );
 		}
 	}
 
