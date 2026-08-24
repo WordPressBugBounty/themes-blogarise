@@ -39,6 +39,14 @@ final class Blogarise_Customize {
 	private function setup_actions() {
 		// Register panels, sections, settings, controls, and partials.
 		add_action( 'customize_register', array( $this, 'sections' ) );
+
+		// Loads Customizer helper functions.
+		add_action( 'after_setup_theme', array( $this, 'customizer_helpers' ) );
+		
+		add_action( 'customize_register', array( $this, 'customize_controls' ), 10 );
+
+		add_action( 'customize_register', array( $this, 'customize_options' ) );
+
 		// Register scripts and styles for the controls.
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_scripts' ), 0 );
 	}
@@ -68,6 +76,38 @@ final class Blogarise_Customize {
 				)
 			)
 		);
+	}
+	/**
+	 * Sets up the customizer Controls.
+	*/
+	public function customize_controls( $wp_customize ) {
+		// Load customize controls.
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/controls/customize-control-helper.php';
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customizer-repeater/customizer-repeater-control.php';
+
+    }
+	/**
+	 * Loads Customizer helper functions and sanitization callbacks.
+	 *
+	 * @since 1.0.0
+	 */
+	public function customizer_helpers() {
+
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/customizer-callback.php';
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/selective-refresh-and-partial.php';
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/customizer-default.php';
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/customizer-sanitize.php';
+	}
+	/**
+	 * Sets up the customizer options.
+	*/
+	public function customize_options( $wp_customize ) {
+
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/settings/header-options.php';
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/settings/theme-options.php';
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/settings/theme-layout.php';
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/settings/frontpage-featured.php';
+		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/settings/frontpage-options.php';
 	}
 	/**
 	 * Loads theme customizer CSS.

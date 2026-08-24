@@ -82,3 +82,42 @@ function blogarise_get_default_theme_options() {
 }
 
 endif;
+
+if ( ! function_exists( 'blogarise_get_social_icon_default' ) ) {
+
+    function blogarise_get_social_icon_default() {
+        return apply_filters(
+            'blogarise_get_social_icon_default',
+            json_encode(
+                array(
+                    array(
+                        'icon_value' => 'fab fa-facebook',
+                        'link'       => '#',
+                        'id'         => 'customizer_repeater_header_social_001',
+                    ),
+                    array(
+                        'icon_value' => 'fa-brands fa-x-twitter',
+                        'link'       =>  '#',
+                        'id'         => 'customizer_repeater_header_social_003',
+                    ),
+                    array(
+                        'icon_value' => 'fab fa-instagram',
+                        'link'       =>  '#',
+                        'id'         => 'customizer_repeater_header_social_005',
+                    ),
+                    array(
+                        'icon_value' => 'fab fa-youtube',
+                        'link'       =>  '#',
+                        'id'         => 'customizer_repeater_header_social_006',
+                    ),
+                    
+                    array(
+                        'icon_value' => 'fab fa-telegram',
+                        'link'       => '#',
+                        'id'         => 'customizer_repeater_header_social_008',
+                    ),
+                )
+            )
+        );
+    }
+}

@@ -6,7 +6,13 @@
  *
  * @package BlogArise
  */
-
+    // Global variables define
+	if ( ! defined( 'BLOGARISE_THEME_DIR' ) ) {
+		define( 'BLOGARISE_THEME_DIR', get_template_directory() . '/' );
+	}
+	if ( ! defined( 'BLOGARISE_THEME_URI' ) ) {
+		define( 'BLOGARISE_THEME_URI', get_template_directory_uri() . '/' );
+	}
  	$blogarise_theme_path = get_template_directory() . '/inc/ansar/';
 
 	require( $blogarise_theme_path . '/blogarise-custom-navwalker.php' );
