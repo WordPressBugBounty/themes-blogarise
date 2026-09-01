@@ -324,3 +324,13 @@ class Blogarise_Customize_Heading_Control extends WP_Customize_Control {
 
     }
 }
+//Pro Button
+class Blogarise_social_section_upgrade extends WP_Customize_Control {
+    public function render_content() { ?>
+        <h3 class="customizer_blogarise_social_upgrade_to_pro" style="display: none;">
+            <?php esc_html_e('To add More Social Icon? Then','blogarise'); ?><a href="<?php echo esc_url( 'https://themeansar.com/blogarise-pro' ); ?>" target="_blank">
+            <?php esc_html_e('Upgrade to Pro','blogarise'); ?> </a>  
+        </h3>
+    <?php
+    }
+}

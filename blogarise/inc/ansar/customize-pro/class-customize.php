@@ -102,6 +102,17 @@ final class Blogarise_Customize {
 	 * Sets up the customizer options.
 	*/
 	public function customize_options( $wp_customize ) {
+		
+		// Panels and Sections 
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customize/settings/panels-and-sections.php';
+
+		// Header Settings
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customize/settings/header/banner-ads.php';
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customize/settings/header/dark-mode.php';
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customize/settings/header/search.php';
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customize/settings/header/social-icons.php';
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customize/settings/header/subscribe.php';
+		require BLOGARISE_THEME_DIR . 'inc/ansar/customize/settings/header/top-bar.php';
 
 		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/settings/header-options.php';
 		require BLOGARISE_THEME_DIR . '/inc/ansar/customize/settings/theme-options.php';
