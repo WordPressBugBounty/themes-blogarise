@@ -12,9 +12,9 @@
 get_header(); ?>
 <main id="content" class="archive-class">
     <div class="container">
+        <!--==================== breadcrumb section ====================-->
         <?php do_action('blogarise_action_archive_page_title'); ?>
         <div class="row">
-            <!--==================== breadcrumb section ====================-->
             <?php do_action('blogarise_action_main_content_layouts') ;?>
         </div>
         <!--/row-->

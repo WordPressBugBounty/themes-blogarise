@@ -14,10 +14,10 @@ get_header(); ?>
 <main id="content" class="page-class content">
 	<!--container-->
 		<div class="container">
+		<!--==================== breadcrumb section ====================-->
         <?php do_action('blogarise_action_archive_page_title'); ?>
 			<!--row-->
 				<div class="row">
-					<!--==================== breadcrumb section ====================-->
 					<!-- Blog Area -->
 					<?php get_template_part('template-parts/content', 'page'); ?>
 				</div>

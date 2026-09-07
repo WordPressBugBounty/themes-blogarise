@@ -66,12 +66,12 @@ function blogarise_admin_enqueue( $hook ) {
 add_action( 'admin_enqueue_scripts', 'blogarise_admin_enqueue' );
 //Custom Color
 function blogarise_custom_js() {
+
+	wp_enqueue_script('blogarise_custom-js', get_template_directory_uri() . '/js/custom.js' , array('jquery'));
 	
 	wp_enqueue_script('blogarise-dark', get_template_directory_uri() . '/js/dark.js' , array('jquery'));
 
 	theme_options_color();
-	
-	wp_enqueue_script('blogarise_custom-js', get_template_directory_uri() . '/js/custom.js' , array('jquery'));
 
     $enable_custom_typography = get_theme_mod('enable_custom_typography',false);
     if( $enable_custom_typography == 'true') {
