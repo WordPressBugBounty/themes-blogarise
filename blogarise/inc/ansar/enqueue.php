@@ -21,7 +21,7 @@
 	wp_enqueue_style('animate',get_template_directory_uri().'/css/animate.css');
 
 	if (class_exists('WooCommerce')) {
-		wp_enqueue_style('woo-css',get_template_directory_uri().'/css/woo.css');	
+		wp_enqueue_style('woo-css', BLOGARISE_THEME_URI . 'css/woo.css', array(), BLOGARISE_THEME_VERSION );
 	}
 
 	if ( is_customize_preview() ) {
