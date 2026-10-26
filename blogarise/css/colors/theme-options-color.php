@@ -134,13 +134,19 @@ footer .bs-footer-copyright p, footer .bs-footer-copyright a {
 <?php } 
 function custom_typography_function() { ?>
 <style>
-.site-branding-text p, .site-title a{
-	font-weight:<?php echo esc_attr(get_theme_mod('site_title_fontweight','700')); ?>;
-	font-family:<?php echo esc_attr(get_theme_mod('site_title_fontfamily','Open Sans')); ?>; 
-}
-.navbar-wp .navbar-nav > li> a, .navbar-wp .dropdown-menu > li > a{ 
-	font-family:<?php echo esc_attr(get_theme_mod('blogarise_menu_fontfamily','Open Sans')); ?>; 
-}
+	
+	:root{
+		--title-font: <?php echo esc_attr(get_theme_mod('site_title_fontfamily','Outfit')); ?>;
+		--title-weight: <?php echo esc_attr(get_theme_mod('site_title_fontweight','700')); ?>;
+		--menus-font: <?php echo esc_attr(get_theme_mod('blogarise_menu_fontfamily','Outfit')); ?>;
+	}
+	.site-branding-text p, .site-title a{
+		font-weight: var(--title-weight);
+		font-family: var(--title-font);
+	}
+	.navbar-wp .navbar-nav > li> a, .navbar-wp .dropdown-menu > li > a{
+		font-family: var(--menus-font);
+	}
 </style>
 <?php }
 

@@ -219,6 +219,7 @@ $wp_customize->add_setting(
         'default'           =>  'Outfit, sans-serif',
         'capability'        =>  'edit_theme_options',
         'sanitize_callback' =>  'sanitize_text_field',
+        'transport'         => 'postMessage',
     )   
 );
 $wp_customize->add_control('site_title_fontfamily', array(
@@ -235,6 +236,7 @@ $wp_customize->add_setting(
         'default'           =>  '700',
         'capability'        =>  'edit_theme_options',
         'sanitize_callback' =>  'sanitize_text_field',
+        'transport'         => 'postMessage',
     )   
 );
 $wp_customize->add_control('site_title_fontweight', array(
@@ -267,6 +269,7 @@ $wp_customize->add_setting(
         'default'           =>  'Outfit, sans-serif',
         'capability'        =>  'edit_theme_options',
         'sanitize_callback' =>  'sanitize_text_field',
+        'transport'         => 'postMessage',
     )   
 );
 $wp_customize->add_control('blogarise_menu_fontfamily', array(

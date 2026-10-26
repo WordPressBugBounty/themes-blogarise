@@ -249,16 +249,39 @@
 			$('.bs_upscr i').addClass(newVal);
 		});
 	});
-	function customizePreviewStyle(settingId, selector, property, unit) {
+
+	function customizePreviewStyle(settingId, target, property, unit = '') {
 		wp.customize(settingId, function(value) {
 			value.bind(function(newVal) {
-				let cssProperties = {};
-				cssProperties[property] = newVal + unit;
-				$(selector).css(cssProperties);
+				if (property.startsWith('--')) { 
+					document.documentElement.style.setProperty(property, newVal + unit);
+				} else { 
+					let styleElement = document.getElementById('customizer-preview-styles');
+					 
+					if (!styleElement) {
+						styleElement = document.createElement('style');
+						styleElement.id = 'customizer-preview-styles';
+						document.head.appendChild(styleElement);
+					}
+					 
+					let styleContent = styleElement.innerHTML;
+					 
+					const regex = new RegExp(`${target}\\s*{[^}]*}`, 'g');
+					styleContent = styleContent.replace(regex, '');
+					 
+					styleContent += `${target} { ${property}: ${newVal + unit}; }`;
+					 
+					styleElement.innerHTML = styleContent;
+				}
 			});
 		});
 	}
+	// For a CSS variable
+	customizePreviewStyle('site_title_fontfamily', ':root', '--title-font', '');
+	customizePreviewStyle('site_title_fontweight', ':root', '--title-weight', '');
+	customizePreviewStyle('blogarise_menu_fontfamily', ':root', '--menus-font', '');
 
+	// For a normal CSS property
 	customizePreviewStyle('blogarise_footer_text_color', 'footer .bs-widget p, .site-title-footer a, .site-title-footer a:hover, .site-description-footer, .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6, footer .bs-widget ul li a', 'color','');
 	customizePreviewStyle('blogarise_footer_overlay_color', 'footer.footer .overlay', 'background-color','');
 	customizePreviewStyle('blogarise_footer_copy_text', 'footer .bs-footer-copyright p, footer .bs-footer-copyright a', 'color','');
@@ -321,3 +344,27 @@
     range_live_load( 'side_main_logo_width', '.site-logo a.navbar-brand', [ 'width' ] );
 
 } )( jQuery );
+
+
+(function (api) {
+  var seen = {}, s = { tf: '', tw: '400', mf: '' };
+  var clean = v => String(v || '').split(',')[0].replace(/['"]/g, '').trim();
+  var st = (k, v) => s[k] = k === 'tw' ? String(v || '400') : clean(v);
+
+  function load(f, w) {
+    w = parseInt(w, 10);
+    if (!f || !(w >= 100 && w <= 900) || (seen[f] = seen[f] || {})[w]) return;
+    seen[f][w] = 1;
+    document.head.appendChild(Object.assign(document.createElement('link'), {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(f).replace(/%20/g, '+') +
+            ':wght@' + Object.keys(seen[f]).sort((a, b) => a - b).join(';') + '&display=swap'
+    }));
+  }
+
+  [['site_title_fontfamily', 'tf'], ['site_title_fontweight', 'tw'], ['blogarise_menu_fontfamily', 'mf']]
+    .forEach(([id, k]) => api(id, o => {
+      st(k, o.get());
+      o.bind(v => { st(k, v); load(s.tf, s.tw); load(s.mf, 400); });
+    }));
+})(wp.customize);

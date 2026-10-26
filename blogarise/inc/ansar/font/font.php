@@ -2,32 +2,44 @@
 /*--------------------------------------------------------------------*/
 /*     Register Google Fonts
 /*--------------------------------------------------------------------*/
-
 function blogarise_fonts_url() {
 
     $fonts = array(
-        'Outfit' => array('400','500','600','700','800'),
-        'Rubik'        => array('300','400','500','600'),
+        'Outfit' => array( 400 , 500 , 600 , 700 , 800 ),
+        'Rubik'        => array( 300 , 400 , 500 , 600 ),
     );
 
-    $title_font   = get_theme_mod( 'site_title_fontfamily', '' );
-    $title_weight = get_theme_mod( 'site_title_fontweight', '400' );
-    $menu_font    = get_theme_mod( 'blogarise_menu_fontfamily', '' );
+    $requested = array(
+        array( get_theme_mod( 'site_title_fontfamily', '' ), get_theme_mod( 'site_title_fontweight', '400' ) ),
+        array( get_theme_mod( 'blogarise_menu_fontfamily', '' ), '400' ),
+    );
 
-    foreach ( array( $title_font => $title_weight, $menu_font => '400' ) as $font => $weight ) {
-        $font = trim( explode( ',', $font )[0] );
+    foreach ( $requested as $item ) {
+        list( $font, $weight ) = $item;
 
-        if ( $font ) {
+        $font   = trim( explode( ',', (string) $font )[0], " \t\n\r\0\x0B'\"" );
+        $weight = absint( $weight );
+
+        if ( $font && $weight >= 100 && $weight <= 900 ) {
             $fonts[ $font ][] = $weight;
         }
     }
 
+    $fonts = apply_filters( 'blogarise_google_fonts', $fonts );
+
+    ksort( $fonts );
+
     $families = array();
 
     foreach ( $fonts as $font => $weights ) {
-        $families[] = 'family=' . rawurlencode(
-            $font . ':wght@' . implode( ';', array_unique( $weights ) )
-        );
+        $weights = array_filter( array_unique( array_map( 'absint', (array) $weights ) ) );
+        sort( $weights, SORT_NUMERIC );
+
+        if ( ! $font || empty( $weights ) ) {
+            continue;
+        }
+
+        $families[] = 'family=' . urlencode( $font ) . ':wght@' . implode( ';', $weights );
     }
 
     return 'https://fonts.googleapis.com/css2?' . implode( '&', $families ) . '&display=swap';
