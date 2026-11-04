@@ -270,11 +270,13 @@ if (!function_exists('blogarise_lite_dark_switcher')) :
     function blogarise_lite_dark_switcher() { $blogarise_lite_dark_switcher = get_theme_mod('blogarise_lite_dark_switcher','true');
         
         if($blogarise_lite_dark_switcher == true){ 
-          if ( isset( $_COOKIE["blogarise-site-mode-cookie"] ) ) {
-            $blogarise_skin_mode = $_COOKIE["blogarise-site-mode-cookie"];
-        } else {
-            $blogarise_skin_mode = get_theme_mod( 'blogarise_skin_mode', 'defaultcolor' );
-        } ?>
+            $allowed_modes = array( 'defaultcolor', 'dark' );
+            $cookie_mode   = isset( $_COOKIE['blogarise-site-mode-cookie'] ) ? sanitize_key( wp_unslash( $_COOKIE['blogarise-site-mode-cookie'] ) ) : '';
+            if ( in_array( $cookie_mode, $allowed_modes, true ) ) {
+                $blogarise_skin_mode = $cookie_mode;
+            } else {
+                $blogarise_skin_mode = get_theme_mod( 'blogarise_skin_mode', 'defaultcolor' );
+            } ?>
           <label class="switch" for="switch">
             <input type="checkbox" name="theme" id="switch" class="<?php echo esc_attr( $blogarise_skin_mode ); ?>" data-skin-mode="<?php echo esc_attr( $blogarise_skin_mode ); ?>" >
             <span class="slider"></span>

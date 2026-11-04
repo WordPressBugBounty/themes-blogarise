@@ -4,8 +4,8 @@ Author: Themeansar
 Requires at least: WordPress 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.8.5
-Version: 1.8.5
+Stable tag: 1.8.6
+Version: 1.8.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -679,3 +679,7 @@ Fixed Heading Typography.
 = Version 1.8.5
 1. Fixed Google Fonts Loading Issue.
 2. Added Live Preview JS for Fonts.
+
+= Version 1.8.6
+1. Fixed identified security vulnerabilities.
+2. Improved input validation and output escaping.

@@ -23,9 +23,11 @@ class blogarise_featured_latest_news extends WP_Widget {
 		
 		echo $args['before_widget'];
 		
-		if($instance['title'])
-	
-		echo $args['before_title'] . $instance['title'] . $args['after_title'];
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+		if ( ! empty( $title ) ) {
+			echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
+		}
 		 
 		$loop = new WP_Query(array( 'post_type' => 'post','ignore_sticky_posts' => 1, 'showposts' => $instance['number_of_posts'] )); ?>
 		<div class="bs-recent-blog-post">
@@ -92,7 +94,7 @@ class blogarise_featured_latest_news extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		
 		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 		$instance['number_of_posts'] = ( ! empty( $new_instance['number_of_posts'] ) ) ? strip_tags( $new_instance['number_of_posts'] ) : '';
 		
 		$instance['tumb_size'] = ( ! empty( $new_instance['tumb_size'] ) ) ? strip_tags( $new_instance['tumb_size'] ) : '';

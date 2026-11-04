@@ -54,14 +54,15 @@ function blogarise_body_classes($classes)
         }
     }
 
-    if ( isset( $_COOKIE["blogarise-site-mode-cookie"] ) ) {
-        $classes[] = $_COOKIE["blogarise-site-mode-cookie"];
+    $allowed_modes = array( 'defaultcolor', 'dark' );
+    $cookie_mode   = isset( $_COOKIE['blogarise-site-mode-cookie'] ) ? sanitize_key( wp_unslash( $_COOKIE['blogarise-site-mode-cookie'] ) ) : '';
+    if ( in_array( $cookie_mode, $allowed_modes, true ) ) {
+        $classes[] = $cookie_mode;
     } else {
-    	$classes[] = get_theme_mod( 'blogarise_skin_mode', 'defaultcolor' );
+        $classes[] = sanitize_html_class( get_theme_mod( 'blogarise_skin_mode', 'defaultcolor' ) );
     }
 
     return $classes;
-
 }
 
 add_filter('body_class', 'blogarise_body_classes');
@@ -639,7 +640,7 @@ if ( class_exists( 'WooCommerce' ) ) {
     // Add clickable product title back
     add_action( 'woocommerce_shop_loop_item_title', 'custom_clickable_product_title', 10 );
     function custom_clickable_product_title() {
-        echo '<h2 class="woocommerce-loop-product__title"><a href="' . esc_url( get_permalink() ) . '">' . get_the_title() . '</a></h2>';
+        echo '<h2 class="woocommerce-loop-product__title"><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></h2>';
     }
     
     function blogarise_custom_pagination_icons( $args ) {

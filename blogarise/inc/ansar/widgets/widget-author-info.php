@@ -47,8 +47,8 @@ class blogarise_author_info extends WP_Widget {
                     
             <div class="bs-author text-center">
                 
-                <?php if (!empty($instance['image_uri']) ) { ?> 
-                    <img class="rounded-circle" src="<?php echo esc_url($instance['image_uri']); ?>" alt="<?php echo apply_filters('widget_title', $instance['name']); ?>" />
+                <?php if (!empty($instance['image_uri']) ) { ?>
+                    <img class="rounded-circle" src="<?php echo esc_url($instance['image_uri']); ?>" alt="<?php echo esc_attr( apply_filters('widget_title', $instance['name']) ); ?>" />
                 <?php } ?>
                 <h4><?php echo esc_html($instance['name']); ?></h4>
                 <p><?php echo esc_html($instance['desc']); ?></p>
@@ -125,7 +125,7 @@ class blogarise_author_info extends WP_Widget {
 
             ?>
 
-            <input type="text" class="widefat custom_media_url_team" name="<?php echo esc_attr($this->get_field_name('image_uri')); ?>" id="<?php echo esc_attr($this->get_field_id('image_uri')); ?>" value="<?php if( !empty($instance['image_uri']) ): echo $instance['image_uri']; endif; ?>" style="margin-top:5px;">
+            <input type="text" class="widefat custom_media_url_team" name="<?php echo esc_attr($this->get_field_name('image_uri')); ?>" id="<?php echo esc_attr($this->get_field_id('image_uri')); ?>" value="<?php echo !empty($instance['image_uri']) ? esc_url($instance['image_uri']) : ''; ?>" style="margin-top:5px;">
             <input type="button" class="button button-primary custom_media_button_team" id="custom_media_button_team" name="<?php echo esc_attr($this->get_field_name('image_uri')); ?>" value="<?php esc_attr_e('Upload Image','blogarise'); ?>" style="margin-top:5px;">
         </p>
 

@@ -3,15 +3,25 @@
  * AJAX handler to store the state of dismissible notices.
  */
 function blogarise_ajax_notice_handler() {
-    if ( isset( $_POST['type'] ) ) {
-        // Pick up the notice "type" - passed via jQuery (the "data-notice" attribute on the notice)
-        $type = sanitize_text_field( wp_unslash( $_POST['type'] ) );
-        // Store it in the options table
-        update_option( 'dismissed-' . $type, TRUE );
+    // 1. Verify capability
+    if ( ! current_user_can( 'edit_theme_options' ) ) {
+        wp_send_json_error( array( 'message' => esc_html__( 'Unauthorized user.', 'blogarise' ) ), 403 );
     }
-}
 
-add_action( 'wp_ajax_blogarise_dismissed_notice_handler', 'blogarise_ajax_notice_handler' );
+    // 2. Verify nonce
+    check_ajax_referer( 'blogarise_notice_nonce', 'security' );
+
+    // 3. Validate against strict allowlist
+    $allowed_types = array( 'get_started' );
+    $type = isset( $_POST['type'] ) ? sanitize_key( wp_unslash( $_POST['type'] ) ) : '';
+
+    if ( in_array( $type, $allowed_types, true ) ) {
+        update_option( 'dismissed-' . $type, true );
+        wp_send_json_success();
+    }
+
+    wp_send_json_error( array( 'message' => esc_html__( 'Invalid notice type.', 'blogarise' ) ), 400 );
+}
 
 function blogarise_deprecated_hook_admin_notice() {
     // Check if it's been dismissed...

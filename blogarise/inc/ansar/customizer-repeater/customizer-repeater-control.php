@@ -426,12 +426,12 @@ class blogarise_Repeater_Control extends WP_Customize_Control {
 					<?php
                     break;
 				case 'color': ?>
-					<input type="text" value="<?php echo ( !empty($options['sanitize_callback']) ?  call_user_func_array( $options['sanitize_callback'], array( $value ) ) : esc_attr($value) ); ?>" class="<?php echo esc_attr($options['class']); ?>" />
+					<input type="text" value="<?php echo esc_attr( !empty($options['sanitize_callback']) ? call_user_func_array( $options['sanitize_callback'], array( $value ) ) : $value ); ?>" class="<?php echo esc_attr($options['class']); ?>" />
 					<?php
 					break;
 			}
 		} else { ?>
-			<input type="text" value="<?php echo ( !empty($options['sanitize_callback']) ?  call_user_func_array( $options['sanitize_callback'], array( $value ) ) : esc_attr($value) ); ?>" class="<?php echo esc_attr($options['class']); ?>" placeholder="<?php echo esc_attr( $options['label'] ); ?>"/>
+			<input type="text" value="<?php echo esc_attr( !empty($options['sanitize_callback']) ? call_user_func_array( $options['sanitize_callback'], array( $value ) ) : $value ); ?>" class="<?php echo esc_attr($options['class']); ?>" placeholder="<?php echo esc_attr( $options['label'] ); ?>"/>
 			<?php
 		}
 	}

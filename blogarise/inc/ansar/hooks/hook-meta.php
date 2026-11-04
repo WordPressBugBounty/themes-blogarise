@@ -66,26 +66,32 @@ endif;
 add_action('category_edit_form_fields', 'blogarise_taxonomy_edit_meta_field', 10, 2);
 
 
-
-
 if (!function_exists('blogarise_save_taxonomy_color_class_meta')) :
-// Save extra taxonomy fields callback function.
-    function blogarise_save_taxonomy_color_class_meta($term_id)
-    {
-        if (isset($_POST['term_meta'])) {
-            $t_id = $term_id;
-            $term_meta = get_option("category_color_$t_id");
-            $cat_keys = array_keys($_POST['term_meta']);
-            foreach ($cat_keys as $key) {
-                if (isset ($_POST['term_meta'][$key])) {
-                    $term_meta[$key] = $_POST['term_meta'][$key];
-                }
+    // Save extra taxonomy fields callback function.
+    function blogarise_save_taxonomy_color_class_meta($term_id) {
+        if ( ! current_user_can( 'edit_term', $term_id ) ) {
+            return;
+        }
+
+        if ( ! isset( $_POST['blogarise_taxonomy_meta_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['blogarise_taxonomy_meta_nonce'] ) ), 'blogarise_save_taxonomy_meta' ) ) {
+            return;
+        }
+
+        if ( isset( $_POST['term_meta']['color_class_term_meta'] ) ) {
+            $allowed_colors = array(
+                'category-color-1',
+                'category-color-2',
+                'category-color-3',
+                'category-color-4',
+            );
+
+            $color_class = sanitize_key( wp_unslash( $_POST['term_meta']['color_class_term_meta'] ) );
+            if ( in_array( $color_class, $allowed_colors, true ) ) {
+                $term_meta = array( 'color_class_term_meta' => $color_class );
+                update_option( "category_color_{$term_id}", $term_meta );
             }
-            // Save the option array.
-            update_option("category_color_$t_id", $term_meta);
         }
     }
-
 endif;
 add_action('edited_category', 'blogarise_save_taxonomy_color_class_meta', 10, 2);
 add_action('create_category', 'blogarise_save_taxonomy_color_class_meta', 10, 2);
