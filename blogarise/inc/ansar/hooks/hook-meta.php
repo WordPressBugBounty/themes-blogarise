@@ -4,6 +4,7 @@ if (!function_exists('blogarise_taxonomy_add_new_meta_field')) :
     function blogarise_taxonomy_add_new_meta_field()
     {
         // this will add the custom meta field to the add new term page
+        wp_nonce_field( 'blogarise_save_taxonomy_meta', 'blogarise_taxonomy_meta_nonce' );
 
         $cat_color = array(
             'category-color-1' => __('Category Color 1', 'blogarise'),
@@ -32,6 +33,7 @@ if (!function_exists('blogarise_taxonomy_edit_meta_field')) :
 // Edit term page
     function blogarise_taxonomy_edit_meta_field($term)
     {
+        wp_nonce_field( 'blogarise_save_taxonomy_meta', 'blogarise_taxonomy_meta_nonce' );
 
         // put the term ID into a variable
         $t_id = $term->term_id;
@@ -53,8 +55,10 @@ if (!function_exists('blogarise_taxonomy_edit_meta_field')) :
                 );
                 ?>
                <select id="term_meta[color_class_term_meta]" name="term_meta[color_class_term_meta]">
-                <?php foreach ($cat_color as $key => $value): ?>
-                    <option value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option>
+                <?php
+                $current = ( is_array( $term_meta ) && isset( $term_meta['color_class_term_meta'] ) ) ? $term_meta['color_class_term_meta'] : '';
+                foreach ( $cat_color as $key => $value ) : ?>
+                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $current, $key ); ?>><?php echo esc_html( $value ); ?></option>
                 <?php endforeach; ?>
             </select>
                 <p class="description"><?php esc_html_e('Select category color class. You can set appropriate categories color on "Categories" section of the theme customizer.', 'blogarise'); ?></p>
