@@ -1,31 +1,43 @@
-jQuery(document).ready( function($) {
+jQuery(document).ready(function ($) {
+    'use strict';
 
-    function media_upload(button_class) {
-        var _custom_media = true,
-        _orig_send_attachment = wp.media.editor.send.attachment;
+    // Handle Upload / Select Image
+    $(document).on('click', '.custom_media_button_team', function (e) {
+        e.preventDefault();
 
-        $('body').on('click', button_class, function(e) {
-            var button_id ='#'+$(this).attr('id');
-            var self = $(button_id);
-            var send_attachment_bkp = wp.media.editor.send.attachment;
-            var button = $(button_id);
-            var id = button.attr('id').replace('_button', '');
+        var $button = $(this);
+        var $container = $button.closest('.author-image-wrap');
+        var $urlInput = $container.find('.custom_media_url_team');
+        var $previewImg = $container.find('.custom_media_image_team');
+        var $removeBtn = $container.find('.custom_media_remove_team');
 
-            _custom_media = true;
-            wp.media.editor.send.attachment = function(props, attachment){
-                if ( _custom_media  ) {
-
-                    $('.custom_media_id').val(attachment.id).trigger('change');
-                    $('.custom_media_url_team').val(attachment.url).trigger('change');
-                    $('.custom_media_image_team').attr('src',attachment.url).css('display','block').trigger('change');
-                } else {
-                    return _orig_send_attachment.apply( button_id, [props, attachment] );
-                }
-            }
-            wp.media.editor.open(button);
-            return false;
-
+        // Create an isolated media modal
+        var frame = wp.media({
+            title: 'Select or Upload Author Image',
+            button: { text: 'Use this image' },
+            library: { type: 'image' },
+            multiple: false
         });
-    }
-    media_upload('.custom_media_button_team.button');
+
+        frame.on('select', function () {
+            var attachment = frame.state().get('selection').first().toJSON();
+            $urlInput.val(attachment.url).trigger('change');
+            $previewImg.attr('src', attachment.url).show();
+            $removeBtn.show();
+        });
+
+        frame.open();
+    });
+
+    // Handle Remove Image
+    $(document).on('click', '.custom_media_remove_team', function (e) {
+        e.preventDefault();
+
+        var $button = $(this);
+        var $container = $button.closest('.author-image-wrap');
+
+        $container.find('.custom_media_url_team').val('').trigger('change');
+        $container.find('.custom_media_image_team').attr('src', '').hide();
+        $button.hide();
+    });
 });
